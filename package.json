@@ -1,0 +1,23 @@
+{
+  "name": "wc-polymer-stencil-todo",
+  "version": "1.0.0",
+  "description": "Comparison on how to update DOM, pass attributes/properties and dispatch/listen to events with Web Components",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shprink/WC-Polymer-Stencil-todo/issues"
+  },
+  "homepage": "https://github.com/shprink/WC-Polymer-Stencil-todo#readme",
+  "devDependencies": {
+    "chromedriver": "^2.34.1",
+    "nightwatch": "^0.9.19",
+    "selenium-server-standalone-jar": "^3.8.1"
+  }
+}

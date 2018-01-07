@@ -1,0 +1,46 @@
+{
+    "src_folders": [
+        "tests/suite"
+    ],
+    "output_folder": ".e2e-results",
+    "custom_commands_path": "./tests/commands",
+    "custom_assertions_path": "",
+    "page_objects_path": "",
+    "globals_path": "",
+    "live_output": true,
+    "selenium": {
+        "start_process": true,
+        "server_path": "./node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-3.8.1.jar",
+        "log_path": "",
+        "port": 4444,
+        "cli_args": {
+            "webdriver.chrome.driver": "",
+            "webdriver.gecko.driver": "",
+            "webdriver.edge.driver": ""
+        }
+    },
+    "test_settings": {
+        "default": {
+            "selenium_port": 4444,
+            "selenium_host": "localhost",
+            "silent": true,
+            "screenshots": {
+                "enabled": false,
+                "path": ""
+            },
+            "desiredCapabilities": {
+                "browserName": "chrome",
+                "javascriptEnabled": true,
+                "acceptSslCerts": true,
+                "marionette": true,
+                "chromeOptions": {
+                    "args": [
+                        "disable-web-security",
+                        "ignore-certificate-errors",
+                        "no-sandbox"
+                    ]
+                }
+            }
+        }
+    }
+}
