@@ -16,6 +16,7 @@ class TodoInput extends HTMLElement {
         this.$input = this.querySelector('input');
         this.$form.addEventListener("submit", (e) => {
             e.preventDefault();
+            if (!this.$input.value) return;
             this.dispatchEvent(new CustomEvent('onSubmit', { detail: this.$input.value }));
             this.$input.value = '';
         });

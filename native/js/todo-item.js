@@ -11,7 +11,7 @@ class TodoItem extends HTMLElement {
         this.innerHTML = `
             <li class="item">
                 <input type="checkbox">
-                <label>te</label>
+                <label></label>
                 <button class="destroy">x</button>
             </li>
         `
