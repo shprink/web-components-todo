@@ -5,7 +5,7 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 
 A todo list helps you understand about internal `state`, `attributes/properties`, `eventListener` and `dispatchEvent`:
 
-![stencil_todos](https://user-images.githubusercontent.com/1388706/34906044-15479288-f865-11e7-9682-ec5b2bd6a368.png)
+<img src="https://user-images.githubusercontent.com/1388706/34906044-15479288-f865-11e7-9682-ec5b2bd6a368.png" width="500" />
 
 ## <todo-item> syntax differences
 
