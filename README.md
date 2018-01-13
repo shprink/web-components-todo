@@ -1,6 +1,9 @@
 # WC-Polymer-Stencil-todo
 Comparison on how to update DOM, pass attributes/properties and dispatch/listen to events with Web Components
 
+![image](https://user-images.githubusercontent.com/1388706/34906184-048eceea-f868-11e7-849b-d36f4abb04fe.png)
+
+
 ## Why is a todo list a good example?
 
 A todo list helps you understand about internal `state`, `attributes/properties`, `eventListener` and `dispatchEvent`:
