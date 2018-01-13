@@ -18,7 +18,7 @@ export class TodoItem {
 
   render() {
     return (
-      <li>
+      <li class={this.checked ? 'completed' : ''}>
         <input type="checkbox" checked={this.checked} onChange={this.handleOnChecked} />
         <label>{this.text}</label>
         <button onClick={this.handleOnRemove}>x</button>
