@@ -35,7 +35,7 @@ class TodoInput extends HTMLElement {
                 }
             </style>
             <form id="new-todo-form">
-                <input id="new-todo" type="text" placeholder="What needs to be done?">
+                <input id="new-todo" type="text" placeholder="What needs to be done?" />
             </form>
         `
         this.$form = this._root.querySelector('form');
