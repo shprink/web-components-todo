@@ -1,0 +1,18 @@
+{
+  "namespace": "App",
+  "fsNamespace": "app",
+  "loader": "../app.js",
+  "core": "app.l6vmwfui.js",
+  "corePolyfilled": "app.d3ekxsqi.js",
+  "components": {
+    "my-todo": {
+      "$": "jrobbnm3"
+    },
+    "todo-input": {
+      "$": "jrobbnm3"
+    },
+    "todo-item": {
+      "$": "jrobbnm3"
+    }
+  }
+}

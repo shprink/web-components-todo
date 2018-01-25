@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Elements Demo</title>
+</head>
+<body>
+
+  <hello-world name="Anna"></hello-world>
+
+  <script src="dist/main.bundle.js"></script>
+  <script>
+      const helloCp = document.querySelector('hello-world');
+      helloCp.addEventListener('hi', (data) => {
+          console.log(data.detail);
+      });
+      setTimeout(() => {
+        helloCp.setAttribute('name', 'Marc');
+      }, 1000);
+  </script>
+
+</body>
+</html>
