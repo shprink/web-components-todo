@@ -59,15 +59,13 @@ export class MyTodo {
     }
 
     todoItemCheckedHandler(e, i) {
-        console.log('eee onTodoItemChecked', e, i)
         const list = [...this.list];
-        const item = list[e];
-        list[e] = Object.assign({}, item, { checked: !item.checked });
+        const item = list[i];
+        list[i] = Object.assign({}, item, { checked: !item.checked });
         this.list = list;
     }
 
     todoItemRemoveHandler(e, i) {
-        console.log('eee onTodoItemRemove', e, i)
-        this.list = [...this.list.slice(0, e), ...this.list.slice(e + 1)];
+        this.list = [...this.list.slice(0, i), ...this.list.slice(i + 1)];
     }
 }

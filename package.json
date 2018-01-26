@@ -4,7 +4,11 @@
   "description": "Comparison on how to update DOM, pass attributes/properties and dispatch/listen to events with Web Components",
   "scripts": {
     "test": "nightwatch",
-    "deploy": "firebase deploy && firebase open hosting:site"
+    "deploy": "firebase deploy && firebase open hosting:site",
+    "build:polymer": "cd polymer && polymer build",
+    "build:angular": "cd angular-elements && npm run build",
+    "build:stencil": "cd stencil && npm run build",
+    "build:all": "npm run build:polymer && npm run build:angular && npm run build:stencil"
   },
   "repository": {
     "type": "git",
