@@ -2,22 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Angular Elements Demo</title>
+  <title>Angular Elements Todo</title>
 </head>
 <body>
 
-  <hello-world name="Anna"></hello-world>
+  <my-todo></my-todo>
 
   <script src="dist/main.bundle.js"></script>
-  <script>
-      const helloCp = document.querySelector('hello-world');
-      helloCp.addEventListener('hi', (data) => {
-          console.log(data.detail);
-      });
-      setTimeout(() => {
-        helloCp.setAttribute('name', 'Marc');
-      }, 1000);
-  </script>
+  <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        line-height: 1.4em;
+        background: #f5f5f5;
+        color: #4d4d4d;
+        min-width: 230px;
+        max-width: 550px;
+        margin: 0 auto;
+        font-weight: 300;
+    }
+</style>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new AotPlugin({
       tsConfigPath: './tsconfig.json',
-      entryModule: path.resolve(__dirname, './src/hello.module#HelloModule' )
+      entryModule: path.resolve(__dirname, './src/todo.module#TodoModule' )
     }),
     new CompressionPlugin({
       asset: "[path].gz[query]",

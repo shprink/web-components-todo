@@ -6,6 +6,7 @@ exports.config = {
   // collections: [
   //   { name: '@stencil/router' }
   // ]
+  publicPath: '/stencil/www/build'
 };
 
 exports.devServer = {

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Comparison on how to update DOM, pass attributes/properties and dispatch/listen to events with Web Components",
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "deploy": "firebase deploy && firebase open hosting:site"
   },
   "repository": {
     "type": "git",
