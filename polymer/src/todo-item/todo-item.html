@@ -95,7 +95,7 @@
     <li class$="item [[isCompleted(checked)]]">
       <input type="checkbox" value="{{checked}}" checked="{{checked::change}}">
       <label>{{text}}</label>
-      <button class="destroy">x</button>
+      <button class="destroy" on-click="handleOnRemove">x</button>
     </li>
   </template>
 
@@ -124,18 +124,11 @@
           }
         };
       }
-      ready() {
-        super.ready();
-        this.$removeButton = this.shadowRoot.querySelector('button');
-        this.$removeButton.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.dispatchEvent(new CustomEvent('remove', { detail: this.index }));
-        });
-        this.$checkbox = this.shadowRoot.querySelector('input[type=checkbox]');
-        this.$checkbox.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.dispatchEvent(new CustomEvent('toggle', { detail: this.index }));
-        });
+      handleOnRemove(e) {
+        this.dispatchEvent(new CustomEvent('remove', { detail: this.index }));
+      }
+      handleOnChecked(e) {
+        this.dispatchEvent(new CustomEvent('toggle', { detail: this.index }));
       }
       isCompleted(completed) {
         return completed ? 'completed' : '';
