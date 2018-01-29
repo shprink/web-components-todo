@@ -12,7 +12,6 @@ class MyTodo extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = `
-            <h1>Todos WC</h1>
             <section>
                 <todo-input></todo-input>
                 <ul id="list-container"></ul>

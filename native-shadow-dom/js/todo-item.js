@@ -5,7 +5,6 @@ class TodoItem extends HTMLElement {
         this._checked = false;
         this._text = '';
     }
-
     connectedCallback() {
         this._root.innerHTML = `
             <style>
@@ -118,32 +117,25 @@ class TodoItem extends HTMLElement {
         });
         this._render();
     }
-
     disconnectedCallback() { }
-
     static get observedAttributes() {
         return ['text'];
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this._text = newValue;
     }
-
     set index(value) {
         this._index = value;
     }
-
     get index() {
         return this._index;
     }
-
     set checked(value) {
         this._checked = Boolean(value);
     }
-
     get checked() {
         return this.hasAttribute('checked');
     }
-
     _render() {
         if (!this.$item) return;
         this.$text.textContent = this._text;

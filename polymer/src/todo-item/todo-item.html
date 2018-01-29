@@ -100,25 +100,18 @@
   </template>
 
   <script>
-    /**
-     * @customElement
-     * @polymer
-     */
     class TodoItem extends Polymer.Element {
       static get is() { return 'todo-item'; }
       static get properties() {
         return {
           checked: {
-            reflectToAttribute: true,
             type: Boolean,
             value: false
           },
           index: {
-            reflectToAttribute: true,
             type: Number,
           },
           text: {
-            reflectToAttribute: true,
             type: String,
             value: ''
           }
