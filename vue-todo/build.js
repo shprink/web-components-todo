@@ -185,6 +185,484 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],2:[function(require,module,exports){
+/**
+  * vue-custom-element v2.0.2
+  * (c) 2018 Karol Fabjańczuk
+  * @license MIT
+  */
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.VueCustomElement = factory());
+}(this, (function () { 'use strict';
+
+/**
+ * ES6 Object.getPrototypeOf Polyfill
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+ */
+
+Object.setPrototypeOf = Object.setPrototypeOf || setPrototypeOf;
+
+function setPrototypeOf(obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+}
+
+var setPrototypeOf_1 = setPrototypeOf.bind(Object);
+
+function isES2015() {
+  if (typeof Symbol === 'undefined' || typeof Reflect === 'undefined') return false;
+
+  return true;
+}
+
+var isES2015$1 = isES2015();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _CustomElement() {
+  return Reflect.construct(HTMLElement, [], this.__proto__.constructor);
+}
+
+
+Object.setPrototypeOf(_CustomElement.prototype, HTMLElement.prototype);
+Object.setPrototypeOf(_CustomElement, HTMLElement);
+function registerCustomElement(tag) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (typeof customElements === 'undefined') {
+    return;
+  }
+
+  function constructorCallback() {
+    if (options.shadow === true && HTMLElement.prototype.attachShadow) {
+      this.attachShadow({ mode: 'open' });
+    }
+    typeof options.constructorCallback === 'function' && options.constructorCallback.call(this);
+  }
+  function connectedCallback() {
+    typeof options.connectedCallback === 'function' && options.connectedCallback.call(this);
+  }
+
+  function disconnectedCallback() {
+    typeof options.disconnectedCallback === 'function' && options.disconnectedCallback.call(this);
+  }
+
+  function attributeChangedCallback(name, oldValue, value) {
+    typeof options.attributeChangedCallback === 'function' && options.attributeChangedCallback.call(this, name, oldValue, value);
+  }
+
+  if (isES2015$1) {
+    var CustomElement = function (_CustomElement2) {
+      _inherits(CustomElement, _CustomElement2);
+
+      function CustomElement(self) {
+        var _ret;
+
+        _classCallCheck(this, CustomElement);
+
+        var _this = _possibleConstructorReturn(this, (CustomElement.__proto__ || Object.getPrototypeOf(CustomElement)).call(this));
+
+        var me = self ? HTMLElement.call(self) : _this;
+
+        constructorCallback.call(me);
+        return _ret = me, _possibleConstructorReturn(_this, _ret);
+      }
+
+      _createClass(CustomElement, null, [{
+        key: 'observedAttributes',
+        get: function get() {
+          return options.observedAttributes || [];
+        }
+      }]);
+
+      return CustomElement;
+    }(_CustomElement);
+
+    CustomElement.prototype.connectedCallback = connectedCallback;
+    CustomElement.prototype.disconnectedCallback = disconnectedCallback;
+    CustomElement.prototype.attributeChangedCallback = attributeChangedCallback;
+
+    customElements.define(tag, CustomElement);
+    return CustomElement;
+  } else {
+    var _CustomElement3 = function _CustomElement3(self) {
+      var me = self ? HTMLElement.call(self) : this;
+
+      constructorCallback.call(me);
+      return me;
+    };
+
+    _CustomElement3.observedAttributes = options.observedAttributes || [];
+
+    _CustomElement3.prototype = Object.create(HTMLElement.prototype, {
+      constructor: {
+        configurable: true,
+        writable: true,
+        value: _CustomElement3
+      }
+    });
+
+    _CustomElement3.prototype.connectedCallback = connectedCallback;
+    _CustomElement3.prototype.disconnectedCallback = disconnectedCallback;
+    _CustomElement3.prototype.attributeChangedCallback = attributeChangedCallback;
+
+    customElements.define(tag, _CustomElement3);
+    return _CustomElement3;
+  }
+}
+
+var camelizeRE = /-(\w)/g;
+var camelize = function camelize(str) {
+  return str.replace(camelizeRE, function (_, c) {
+    return c ? c.toUpperCase() : '';
+  });
+};
+var hyphenateRE = /([^-])([A-Z])/g;
+var hyphenate = function hyphenate(str) {
+  return str.replace(hyphenateRE, '$1-$2').replace(hyphenateRE, '$1-$2').toLowerCase();
+};
+
+function toArray(list) {
+  var start = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  var i = list.length - start;
+  var ret = new Array(i);
+  while (i--) {
+    ret[i] = list[i + start];
+  }
+  return ret;
+}
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function convertAttributeValue(value) {
+  var propsValue = value;
+  var isBoolean = ['true', 'false'].indexOf(value) > -1;
+  var valueParsed = parseFloat(propsValue, 10);
+  var isNumber = !isNaN(valueParsed) && isFinite(propsValue) && !propsValue.match(/^0+[^.]\d*$/g);
+
+  if (isBoolean) {
+    propsValue = propsValue === 'true';
+  } else if (isNumber) {
+    propsValue = valueParsed;
+  }
+
+  return propsValue;
+}
+
+function extractProps(collection, props) {
+  if (collection && collection.length) {
+    collection.forEach(function (prop) {
+      var camelCaseProp = camelize(prop);
+      props.camelCase.indexOf(camelCaseProp) === -1 && props.camelCase.push(camelCaseProp);
+    });
+  } else if (collection && (typeof collection === 'undefined' ? 'undefined' : _typeof(collection)) === 'object') {
+    for (var prop in collection) {
+      var camelCaseProp = camelize(prop);
+      props.camelCase.indexOf(camelCaseProp) === -1 && props.camelCase.push(camelCaseProp);
+    }
+  }
+}
+
+function getProps() {
+  var componentDefinition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var props = {
+    camelCase: [],
+    hyphenate: []
+  };
+
+  if (componentDefinition.mixins) {
+    componentDefinition.mixins.forEach(function (mixin) {
+      extractProps(mixin.props, props);
+    });
+  }
+
+  if (componentDefinition.extends && componentDefinition.extends.props) {
+    var parentProps = componentDefinition.extends.props;
+
+
+    extractProps(parentProps, props);
+  }
+
+  extractProps(componentDefinition.props, props);
+
+  props.camelCase.forEach(function (prop) {
+    props.hyphenate.push(hyphenate(prop));
+  });
+
+  return props;
+}
+
+function reactiveProps(element, props) {
+  props.camelCase.forEach(function (name, index) {
+    Object.defineProperty(element, name, {
+      get: function get() {
+        return this.__vue_custom_element__[name];
+      },
+      set: function set(value) {
+        if (((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' || typeof value === 'function') && this.__vue_custom_element__) {
+          var propName = props.camelCase[index];
+          this.__vue_custom_element__[propName] = value;
+        } else {
+          this.setAttribute(props.hyphenate[index], convertAttributeValue(value));
+        }
+      }
+    });
+  });
+}
+
+function getPropsData(element, componentDefinition, props) {
+  var propsData = componentDefinition.propsData || {};
+
+  props.hyphenate.forEach(function (name, index) {
+    var propCamelCase = props.camelCase[index];
+    var propValue = element.attributes[name] || element[propCamelCase];
+
+    propsData[propCamelCase] = propValue instanceof Attr ? convertAttributeValue(propValue.value) : propValue;
+  });
+
+  return propsData;
+}
+
+function getAttributes(children) {
+  var attributes = {};
+
+  toArray(children.attributes).forEach(function (attribute) {
+    attributes[attribute.nodeName === 'vue-slot' ? 'slot' : attribute.nodeName] = attribute.nodeValue;
+  });
+
+  return attributes;
+}
+
+function getSlots() {
+  var children = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var createElement = arguments[1];
+
+  var slots = [];
+  toArray(children).forEach(function (child) {
+    if (child.nodeName === '#text') {
+      if (child.nodeValue.trim()) {
+        slots.push(createElement('span', child.nodeValue));
+      }
+    } else if (child.nodeName !== '#comment') {
+      var attributes = getAttributes(child);
+      var elementOptions = {
+        attrs: attributes,
+        domProps: {
+          innerHTML: child.innerHTML
+        }
+      };
+
+      if (attributes.slot) {
+        elementOptions.slot = attributes.slot;
+        attributes.slot = undefined;
+      }
+
+      slots.push(createElement(child.tagName, elementOptions));
+    }
+  });
+
+  return slots;
+}
+
+function customEvent(eventName, detail) {
+  var params = { bubbles: false, cancelable: false, detail: detail };
+  var event = void 0;
+  if (typeof window.CustomEvent === 'function') {
+    event = new CustomEvent(eventName, params);
+  } else {
+    event = document.createEvent('CustomEvent');
+    event.initCustomEvent(eventName, params.bubbles, params.cancelable, params.detail);
+  }
+  return event;
+}
+
+function customEmit(element, eventName) {
+  for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  var event = customEvent(eventName, [].concat(args));
+  element.dispatchEvent(event);
+}
+
+function createVueInstance(element, Vue, componentDefinition, props, options) {
+  if (!element.__vue_custom_element__) {
+    var beforeCreate = function beforeCreate() {
+      this.$emit = function emit() {
+        var _proto__$$emit;
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        customEmit.apply(undefined, [element].concat(args));
+        this.__proto__ && (_proto__$$emit = this.__proto__.$emit).call.apply(_proto__$$emit, [this].concat(args));
+      };
+    };
+
+    var ComponentDefinition = Vue.util.extend({}, componentDefinition);
+    var propsData = getPropsData(element, ComponentDefinition, props);
+    var vueVersion = Vue.version && parseInt(Vue.version.split('.')[0], 10) || 0;
+
+    ComponentDefinition.beforeCreate = [].concat(ComponentDefinition.beforeCreate || [], beforeCreate);
+
+    if (ComponentDefinition._compiled) {
+      var ctorOptions = {};
+      if (ComponentDefinition._Ctor) {
+        ctorOptions = ComponentDefinition._Ctor[0].options;
+      }
+      ctorOptions.beforeCreate = ComponentDefinition.beforeCreate;
+    }
+
+    var rootElement = void 0;
+
+    if (vueVersion >= 2) {
+      var elementOriginalChildren = element.cloneNode(true).childNodes;
+      rootElement = {
+        propsData: propsData,
+        props: props.camelCase,
+        computed: {
+          reactiveProps: function reactiveProps$$1() {
+            var _this = this;
+
+            var reactivePropsList = {};
+            props.camelCase.forEach(function (prop) {
+              reactivePropsList[prop] = _this[prop];
+            });
+
+            return reactivePropsList;
+          }
+        },
+        render: function render(createElement) {
+          var data = {
+            props: this.reactiveProps
+          };
+
+          return createElement(ComponentDefinition, data, getSlots(elementOriginalChildren, createElement));
+        }
+      };
+    } else if (vueVersion === 1) {
+      rootElement = ComponentDefinition;
+      rootElement.propsData = propsData;
+    } else {
+      rootElement = ComponentDefinition;
+      var propsWithDefault = {};
+      Object.keys(propsData).forEach(function (prop) {
+        propsWithDefault[prop] = { default: propsData[prop] };
+      });
+      rootElement.props = propsWithDefault;
+    }
+
+    var elementInnerHtml = vueVersion >= 2 ? '<div></div>' : ('<div>' + element.innerHTML + '</div>').replace(/vue-slot=/g, 'slot=');
+    if (options.shadow && element.shadowRoot) {
+      element.shadowRoot.innerHTML = elementInnerHtml;
+      rootElement.el = element.shadowRoot.children[0];
+    } else {
+      element.innerHTML = elementInnerHtml;
+      rootElement.el = element.children[0];
+    }
+
+    reactiveProps(element, props);
+
+    element.__vue_custom_element__ = new Vue(rootElement);
+    if (options.shadow && options.shadowCss && element.shadowRoot) {
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.appendChild(document.createTextNode(options.shadowCss));
+
+      element.shadowRoot.appendChild(style);
+    }
+    element.removeAttribute('vce-cloak');
+    element.setAttribute('vce-ready', '');
+    customEmit(element, 'vce-ready');
+  }
+}
+
+function install(Vue) {
+  Vue.customElement = function vueCustomElement(tag, componentDefinition) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    var isAsyncComponent = typeof componentDefinition === 'function';
+    var optionsProps = isAsyncComponent && { props: options.props || [] };
+    var props = getProps(isAsyncComponent ? optionsProps : componentDefinition);
+
+    var CustomElement = registerCustomElement(tag, {
+      constructorCallback: function constructorCallback() {
+        typeof options.constructorCallback === 'function' && options.constructorCallback.call(this);
+      },
+      connectedCallback: function connectedCallback() {
+        var _this = this;
+
+        var asyncComponentPromise = isAsyncComponent && componentDefinition();
+        var isAsyncComponentPromise = asyncComponentPromise && asyncComponentPromise.then && typeof asyncComponentPromise.then === 'function';
+
+        if (isAsyncComponent && !isAsyncComponentPromise) {
+          throw new Error('Async component ' + tag + ' do not returns Promise');
+        }
+        if (!this.__detached__) {
+          if (isAsyncComponentPromise) {
+            asyncComponentPromise.then(function (lazyLoadedComponent) {
+              var lazyLoadedComponentProps = getProps(lazyLoadedComponent);
+              createVueInstance(_this, Vue, lazyLoadedComponent, lazyLoadedComponentProps, options);
+            });
+          } else {
+            createVueInstance(this, Vue, componentDefinition, props, options);
+          }
+        }
+
+        this.__detached__ = false;
+      },
+      disconnectedCallback: function disconnectedCallback() {
+        var _this2 = this;
+
+        this.__detached__ = true;
+        typeof options.disconnectedCallback === 'function' && options.disconnectedCallback.call(this);
+
+        setTimeout(function () {
+          if (_this2.__detached__ && _this2.__vue_custom_element__) {
+            _this2.__vue_custom_element__.$destroy(true);
+          }
+        }, options.destroyTimeout || 3000);
+      },
+      attributeChangedCallback: function attributeChangedCallback(name, oldValue, value) {
+        if (this.__vue_custom_element__ && typeof value !== 'undefined') {
+          var nameCamelCase = camelize(name);
+          typeof options.attributeChangedCallback === 'function' && options.attributeChangedCallback.call(this, name, oldValue, value);
+          this.__vue_custom_element__[nameCamelCase] = convertAttributeValue(value);
+        }
+      },
+
+
+      observedAttributes: props.hyphenate,
+
+      shadow: !!options.shadow && !!HTMLElement.prototype.attachShadow
+    });
+
+    return CustomElement;
+  };
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(install);
+  if (install.installed) {
+    install.installed = false;
+  }
+}
+
+return install;
+
+})));
+
+},{}],3:[function(require,module,exports){
 var Vue // late bind
 var version
 var map = (window.__VUE_HOT_MAP__ = Object.create(null))
@@ -414,7 +892,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v2.5.13
@@ -8341,7 +8819,7 @@ Vue$3.nextTick(function () {
 module.exports = Vue$3;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":1}],4:[function(require,module,exports){
+},{"_process":1}],5:[function(require,module,exports){
 var inserted = exports.cache = {}
 
 function noop () {}
@@ -8366,16 +8844,18 @@ exports.insert = function (css) {
   }
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 // main.js
 const Vue = require("vue")
+const VCE = require("vue-custom-element")
 
-Vue.component("my-todo", require("./my-todo.vue"));
-Vue.component("todo-input", require("./todo-input.vue"));
-Vue.component("todo-item", require("./todo-item.vue"));
+Vue.use(VCE)
 
-new Vue({ el: "#mount", render: r => r("my-todo") })
-},{"./my-todo.vue":6,"./todo-input.vue":7,"./todo-item.vue":8,"vue":3}],6:[function(require,module,exports){
+Vue.customElement("todo-item", require("./todo-item.vue"))
+Vue.customElement("todo-input", require("./todo-input.vue"))
+Vue.customElement("my-todo", require("./my-todo.vue"))
+
+},{"./my-todo.vue":7,"./todo-input.vue":8,"./todo-item.vue":9,"vue":4,"vue-custom-element":2}],7:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":host {\n  display: block;\n}\n\nh1 {\n  font-size: 80px;\n  font-weight: 100;\n  text-align: center;\n  color: rgba(175, 47, 47, 0.15);\n}\n\nsection {\n  background: #fff;\n  margin: 130px 0 40px 0;\n  position: relative;\n  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);\n}\n\n#list-container {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  border-top: 1px solid #e6e6e6;\n}")
 ;(function(){
 //
@@ -8403,11 +8883,12 @@ module.exports = {
   },
   methods:{
     add(item){
-      this.itens.unshift(item)
+      console.log(item)
+      this.itens.push(item.detail[0])
     },
     remove(item){
       console.log(item)
-      this.itens = this.itens.filter(e => e != item)
+      this.itens = this.itens.filter(e => e.text != item.detail[0])
     }
   }
 };
@@ -8416,7 +8897,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("Todos Vue")]),_vm._v(" "),_c('section',[_c('todo-input',{on:{"onnewtodo":_vm.add}}),_vm._v(" "),_c('ul',{attrs:{"id":"list-container"}},_vm._l((_vm.itens),function(item){return _c('todo-item',{key:item.value,attrs:{"todo":item},on:{"onremove":_vm.remove}})}))],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',[_vm._v("Todos Vue")]),_vm._v(" "),_c('section',[_c('todo-input',{on:{"onnewtodo":_vm.add}}),_vm._v(" "),_c('ul',{attrs:{"id":"list-container"}},_vm._l((_vm.itens),function(item){return _c('todo-item',{key:item.value,attrs:{"todo-checked":item.checked,"todo-text":item.text},on:{"onremove":_vm.remove}})}))],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -8429,7 +8910,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-db40043c", __vue__options__)
   }
 })()}
-},{"vue":3,"vue-hot-reload-api":2,"vueify/lib/insert-css":4}],7:[function(require,module,exports){
+},{"vue":4,"vue-hot-reload-api":3,"vueify/lib/insert-css":5}],8:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":host {\n  display: block;\n}\n\niron-input {\n  width: 100%;\n}\n\n#new-todo-form {\n  position: relative;\n  font-size: 24px;\n  border-bottom: 1px solid #ededed;\n}\n\n#new-todo {\n  padding: 16px 16px 16px 60px;\n  border: none;\n  background: rgba(0, 0, 0, 0.003);\n  position: relative;\n  margin: 0;\n  width: 100%;\n  font-size: 24px;\n  font-family: inherit;\n  font-weight: inherit;\n  line-height: 1.4em;\n  border: 0;\n  outline: none;\n  color: inherit;\n  padding: 6px;\n  border: 1px solid #ccc;\n  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);\n  box-sizing: border-box;\n}")
 ;(function(){
 //
@@ -8470,7 +8951,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-e1544290", __vue__options__)
   }
 })()}
-},{"vue":3,"vue-hot-reload-api":2,"vueify/lib/insert-css":4}],8:[function(require,module,exports){
+},{"vue":4,"vue-hot-reload-api":3,"vueify/lib/insert-css":5}],9:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":host {\n  display: block;\n}\n\nli.item {\n  font-size: 24px;\n  display: block;\n  position: relative;\n  border-bottom: 1px solid #ededed;\n}\n\nli.item input {\n  text-align: center;\n  width: 40px;\n  /* auto, since non-WebKit browsers doesn't support input styling */\n  height: auto;\n  position: absolute;\n  top: 9px;\n  bottom: 0;\n  margin: auto 0;\n  border: none;\n  /* Mobile Safari */\n  -webkit-appearance: none;\n  appearance: none;\n}\n\nli.item input:after {\n  content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#ededed\" stroke-width=\"3\"/></svg>');\n}\n\nli.item input:checked:after {\n  content: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"-10 -18 100 135\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"none\" stroke=\"#bddad5\" stroke-width=\"3\"/><path fill=\"#5dc2af\" d=\"M72 25L42 71 27 56l-4 4 20 20 34-52z\"/></svg>');\n}\n\nli.item label {\n  white-space: pre;\n  word-break: break-word;\n  padding: 15px 60px 15px 15px;\n  margin-left: 45px;\n  display: block;\n  line-height: 1.2;\n  transition: color 0.4s;\n}\n\nli.item.completed label {\n  color: #d9d9d9;\n  text-decoration: line-through;\n}\n\nli.item button,\nli.item input[type=\"checkbox\"] {\n  outline: none;\n}\n\nli.item button {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  background: none;\n  font-size: 100%;\n  vertical-align: baseline;\n  font-family: inherit;\n  font-weight: inherit;\n  color: inherit;\n  -webkit-appearance: none;\n  appearance: none;\n  -webkit-font-smoothing: antialiased;\n  -moz-font-smoothing: antialiased;\n  font-smoothing: antialiased;\n}\n\nli.item .destroy {\n  position: absolute;\n  top: 0;\n  right: 10px;\n  bottom: 0;\n  width: 40px;\n  height: 40px;\n  margin: auto 0;\n  font-size: 30px;\n  color: #cc9a9a;\n  margin-bottom: 11px;\n  transition: color 0.2s ease-out;\n}\n\nli.item .destroy:hover {\n  color: #af5b5e;\n}")
 ;(function(){
 //
@@ -8484,10 +8965,10 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":host {\
 
 module.exports = {
   name: "TodoItem",
-  props: ["todo"],
+  props: ["todo-text", "todo-checked"],
   methods: {
     handleOnRemove() {
-      this.$emit("onremove", this.todo);
+      this.$emit("onremove", this.todoText);
     }
   }
 };
@@ -8496,7 +8977,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{class:['item', {'completed':_vm.todo.checked}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.todo.checked),expression:"todo.checked"}],attrs:{"type":"checkbox"},domProps:{"checked":_vm.todo.checked,"checked":Array.isArray(_vm.todo.checked)?_vm._i(_vm.todo.checked,null)>-1:(_vm.todo.checked)},on:{"change":function($event){var $$a=_vm.todo.checked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.todo.checked=$$a.concat([$$v]))}else{$$i>-1&&(_vm.todo.checked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.$set(_vm.todo, "checked", $$c)}}}}),_vm._v(" "),_c('label',[_vm._v(_vm._s(_vm.todo.text))]),_vm._v(" "),_c('button',{staticClass:"destroy",on:{"click":_vm.handleOnRemove}},[_vm._v("x")])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{class:['item', {'completed':_vm.todoChecked}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.todoChecked),expression:"todoChecked"}],attrs:{"type":"checkbox"},domProps:{"checked":_vm.todoChecked,"checked":Array.isArray(_vm.todoChecked)?_vm._i(_vm.todoChecked,null)>-1:(_vm.todoChecked)},on:{"change":function($event){var $$a=_vm.todoChecked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.todoChecked=$$a.concat([$$v]))}else{$$i>-1&&(_vm.todoChecked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.todoChecked=$$c}}}}),_vm._v(" "),_c('label',[_vm._v(_vm._s(_vm.todoText))]),_vm._v(" "),_c('button',{staticClass:"destroy",on:{"click":_vm.handleOnRemove}},[_vm._v("x")])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -8509,4 +8990,4 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-1e2c2015", __vue__options__)
   }
 })()}
-},{"vue":3,"vue-hot-reload-api":2,"vueify/lib/insert-css":4}]},{},[5]);
+},{"vue":4,"vue-hot-reload-api":3,"vueify/lib/insert-css":5}]},{},[6]);
