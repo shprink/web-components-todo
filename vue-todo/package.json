@@ -16,10 +16,11 @@
     "vueify": "^9.4.1"
   },
   "dependencies": {
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-custom-element": "^2.0.2"
   },
-  "browserify":{
-    "transform":[
+  "browserify": {
+    "transform": [
       "vueify"
     ]
   }

@@ -1,7 +1,7 @@
 <template>
-  <li :class="['item', {'completed':todo.checked}]">
-    <input type="checkbox" v-model="todo.checked" :checked="todo.checked" />
-    <label>{{todo.text}}</label>
+  <li :class="['item', {'completed':todoChecked}]">
+    <input type="checkbox" v-model="todoChecked" :checked="todoChecked" />
+    <label>{{todoText}}</label>
     <button class="destroy" @click="handleOnRemove">x</button>
   </li>
 </template>
@@ -9,10 +9,10 @@
 <script>
 module.exports = {
   name: "TodoItem",
-  props: ["todo"],
+  props: ["todo-text", "todo-checked"],
   methods: {
     handleOnRemove() {
-      this.$emit("onremove", this.todo);
+      this.$emit("onremove", this.todoText);
     }
   }
 };

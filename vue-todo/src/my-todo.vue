@@ -4,7 +4,7 @@
     <section>
       <todo-input @onnewtodo="add"></todo-input>
       <ul id="list-container">
-        <todo-item v-for="item in itens" :key="item.value" :todo="item" @onremove="remove"></todo-item>
+        <todo-item v-for="item in itens" :key="item.value" :todo-checked="item.checked" :todo-text="item.text" @onremove="remove"></todo-item>
       </ul>
     </section>
   </div>
@@ -23,11 +23,12 @@ module.exports = {
   },
   methods:{
     add(item){
-      this.itens.unshift(item)
+      console.log(item)
+      this.itens.push(item.detail[0])
     },
     remove(item){
       console.log(item)
-      this.itens = this.itens.filter(e => e != item)
+      this.itens = this.itens.filter(e => e.text != item.detail[0])
     }
   }
 };

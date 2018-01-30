@@ -1,8 +1,11 @@
 // main.js
 const Vue = require("vue")
+const VCE = require("vue-custom-element")
 
-Vue.component("my-todo", require("./my-todo.vue"));
-Vue.component("todo-input", require("./todo-input.vue"));
-Vue.component("todo-item", require("./todo-item.vue"));
+Vue.use(VCE)
 
-new Vue({ el: "#mount", render: r => r("my-todo") })
+Vue.customElement("todo-item", require("./todo-item.vue"))
+Vue.customElement("todo-input", require("./todo-input.vue"))
+Vue.customElement("my-todo", require("./my-todo.vue"))
+
+// new Vue({ el: "#mount", render: r => r("my-todo") })
