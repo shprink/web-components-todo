@@ -1,0 +1,27 @@
+{
+  "name": "vue-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "budo src/main.js:build.js -o -l",
+    "build": "browserify src/main.js -o build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^15.2.0",
+    "budo": "^11.0.1",
+    "vueify": "^9.4.1"
+  },
+  "dependencies": {
+    "vue": "^2.5.13",
+    "vue-custom-element": "^2.0.2"
+  },
+  "browserify": {
+    "transform": [
+      "vueify"
+    ]
+  }
+}
