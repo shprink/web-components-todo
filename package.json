@@ -8,7 +8,8 @@
     "build:polymer": "cd polymer && polymer build",
     "build:angular": "cd angular-elements && npm run build",
     "build:stencil": "cd stencil && npm run build",
-    "build:all": "npm run build:polymer && npm run build:angular && npm run build:stencil"
+    "build:vue": "cd vue-todo && npm run build",
+    "build:all": "npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:vue"
   },
   "repository": {
     "type": "git",
