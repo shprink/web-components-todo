@@ -2,7 +2,9 @@
   "name": "todo",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-input": "PolymerElements/iron-input#^2.0.1",
+    "iron-form": "PolymerElements/iron-form#^2.1.3"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
