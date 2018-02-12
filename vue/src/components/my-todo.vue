@@ -2,9 +2,9 @@
   <div>
     <h1>Todos Vue</h1>
     <section>
-      <todo-input @onsubmit="handleOnSubmit"></todo-input>
+      <vue-todo-input @onsubmit="handleOnSubmit"></vue-todo-input>
       <ul id="list-container">
-        <todo-item v-for="(item, index) in list" :key="item.value" :index="index" :checked="item.checked" :text="item.text" @onremove="handleRemove" @ontoggle="handleToggle"></todo-item>
+        <vue-todo-item v-for="(item, index) in list" :key="item.value" :index="index" :checked="item.checked" :text="item.text" @onremove="handleRemove" @ontoggle="handleToggle"></vue-todo-item>
       </ul>
     </section>
   </div>

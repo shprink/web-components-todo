@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
+    "start": "vue-cli-service serve --open",
+    "build": "npm run build:wc && cp index.html dist/ && rm dist/demo.html",
+    "build:wc": "vue-cli-service build --target wc --name vue 'src/components/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
