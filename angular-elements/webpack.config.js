@@ -1,6 +1,7 @@
 /* global module */
 const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 const CompressionPlugin = require("compression-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -14,15 +15,19 @@ module.exports = {
   plugins: [
     new AotPlugin({
       tsConfigPath: './tsconfig.json',
-      entryModule: path.resolve(__dirname, './src/todo.module#TodoModule' )
+      entryModule: path.resolve(__dirname, './src/todo.module#TodoModule')
     }),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'src/index.html'
+    }),
+    // new CompressionPlugin({
+    //   asset: "[path].gz[query]",
+    //   algorithm: "gzip",
+    //   test: /\.js$|\.css$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // })
   ],
   output: {
     path: __dirname + '/dist',

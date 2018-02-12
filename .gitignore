@@ -58,3 +58,4 @@ typings/
 .env
 
 .e2e-results
+dist/

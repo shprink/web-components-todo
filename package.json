@@ -5,17 +5,16 @@
   "scripts": {
     "test": "nightwatch",
     "deploy": "firebase deploy && firebase open hosting:site",
-    "build:polymer": "cd polymer && polymer build",
-    "build:angular": "cd angular-elements && npm run build",
-    "build:stencil": "cd stencil && npm run build",
-    "build:vue": "cd vue-todo && npm run build",
-    "build:all": "npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:vue"
+    "build:index": "cp ./index.html ./dist",
+    "build:native": "cp -R ./native-shadow-dom ./dist/native",
+    "build:polymer": "cd polymer && polymer build && mv build/es6-bundled ../dist/polymer2",
+    "build:angular": "cd angular-elements && npm run build && mv dist ../dist/angular-elements",
+    "build:stencil": "cd stencil && npm run build && mv www ../dist/stencil",
+    "build:vue": "cd vue-web-component-wrapper && npm run build && mv dist ../dist/vue",
+    "build:all": "npm run build:index && npm run build:native && npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:vue"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git",
+  "author": "shprink <julien.renaux@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shprink/WC-Polymer-Stencil-todo/issues"
@@ -25,5 +24,6 @@
     "chromedriver": "^2.34.1",
     "nightwatch": "^0.9.19",
     "selenium-server-standalone-jar": "^3.8.1"
-  }
+  },
+  "main": "index.js"
 }

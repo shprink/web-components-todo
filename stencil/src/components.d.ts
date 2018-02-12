@@ -5,12 +5,21 @@
  */
 
 
+declare global {
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+  }
+}
+
+
+
 import {
   MyTodo as MyTodo
 } from './components/my-todo/my-todo';
 
 declare global {
-  interface HTMLMyTodoElement extends MyTodo, HTMLElement {
+  interface HTMLMyTodoElement extends MyTodo, HTMLStencilElement {
   }
   var HTMLMyTodoElement: {
     prototype: HTMLMyTodoElement;
@@ -40,7 +49,7 @@ import {
 } from './components/todo-input/todo-input';
 
 declare global {
-  interface HTMLTodoInputElement extends TodoInput, HTMLElement {
+  interface HTMLTodoInputElement extends TodoInput, HTMLStencilElement {
   }
   var HTMLTodoInputElement: {
     prototype: HTMLTodoInputElement;
@@ -70,7 +79,7 @@ import {
 } from './components/todo-item/todo-item';
 
 declare global {
-  interface HTMLTodoItemElement extends TodoItem, HTMLElement {
+  interface HTMLTodoItemElement extends TodoItem, HTMLStencilElement {
   }
   var HTMLTodoItemElement: {
     prototype: HTMLTodoItemElement;
