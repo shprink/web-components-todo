@@ -5,12 +5,13 @@
   "scripts": {
     "test": "nightwatch",
     "deploy": "firebase deploy && firebase open hosting:site",
+    "serve": "http-server ./dist",
     "build:index": "cp ./index.html ./dist",
     "build:native": "cp -R ./native-shadow-dom ./dist/native",
-    "build:polymer": "cd polymer && polymer build && mv build/es6-bundled ../dist/polymer2",
-    "build:angular": "cd angular-elements && npm run build && mv dist ../dist/angular-elements",
-    "build:stencil": "cd stencil && npm run build && mv www ../dist/stencil",
-    "build:vue": "cd vue-web-component-wrapper && npm run build && mv dist ../dist/vue",
+    "build:polymer": "cd polymer && polymer build && rm -fr ../dist/polymer2 && mv build/es6-bundled ../dist/polymer2",
+    "build:angular": "cd angular-elements && npm run build && rm -fr ../dist/angular-elements && mv dist ../dist/angular-elements",
+    "build:stencil": "cd stencil && npm run build && rm -fr ../dist/stencil && mv www ../dist/stencil",
+    "build:vue": "cd vue && npm run build && rm -fr ../dist/vue && mv dist ../dist/vue",
     "build:all": "npm run build:index && npm run build:native && npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:vue"
   },
   "repository": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git",
