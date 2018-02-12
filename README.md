@@ -12,5 +12,4 @@ A todo list helps you understand about internal `state`, `attributes/properties`
 
 ## <todo-item> syntax differences
 
-![wc_polymer_stenciljs](https://user-images.githubusercontent.com/1388706/34905611-0d3f3b34-f85d-11e7-8d11-b83c19ddaf3b.png)
-
+![wc_comparison](https://user-images.githubusercontent.com/1388706/36108142-64011740-101c-11e8-9ca3-d8e190bf9dc3.png)
