@@ -7,6 +7,6 @@ import MyTodo from './components/my-todo.vue';
 import TodoInput from './components/todo-input.vue';
 import TodoItem from './components/todo-item.vue';
 
-window.customElements.define('my-todo', wrap(Vue, MyTodo));
-window.customElements.define('todo-input', wrap(Vue, TodoInput));
-window.customElements.define('todo-item', wrap(Vue, TodoItem));
+window.customElements.define('vue-my-todo', wrap(Vue, MyTodo));
+window.customElements.define('vue-todo-input', wrap(Vue, TodoInput));
+window.customElements.define('vue-todo-item', wrap(Vue, TodoItem));
