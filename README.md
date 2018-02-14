@@ -1,14 +1,16 @@
-# WC-Polymer-Stencil-todo
+# web-components-todo
+
 Comparison on how to update DOM, pass attributes/properties and dispatch/listen to events with Web Components
 
-![image](https://user-images.githubusercontent.com/1388706/34906184-048eceea-f868-11e7-849b-d36f4abb04fe.png)
+![todo](https://user-images.githubusercontent.com/1388706/36195203-098d39ea-116d-11e8-8573-5c19cab826e0.gif)
 
+## Demos
 
-## Why is a todo list a good example?
-
-A todo list helps you understand about internal `state`, `attributes/properties`, `eventListener` and `dispatchEvent`:
-
-<img src="https://user-images.githubusercontent.com/1388706/34906044-15479288-f865-11e7-9682-ec5b2bd6a368.png" width="500" />
+[Native Web Component](https://wc-todo.firebaseapp.com/native)
+[Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
+[StencilJS](https://wc-todo.firebaseapp.com/stencil)
+[Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)
+[Vue](https://wc-todo.firebaseapp.com/vue)
 
 ## <todo-item> syntax differences
 
