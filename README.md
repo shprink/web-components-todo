@@ -6,11 +6,11 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 
 ## Demos
 
-[Native Web Component](https://wc-todo.firebaseapp.com/native)
-[Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
-[StencilJS](https://wc-todo.firebaseapp.com/stencil)
-[Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)
-[Vue](https://wc-todo.firebaseapp.com/vue)
+* [Native Web Component](https://wc-todo.firebaseapp.com/native)
+* [Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
+* [StencilJS](https://wc-todo.firebaseapp.com/stencil)
+* [Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)
+* [Vue](https://wc-todo.firebaseapp.com/vue)
 
 ## <todo-item> syntax differences
 
