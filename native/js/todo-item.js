@@ -1,3 +1,12 @@
+const templateTodoItem = document.createElement('template');
+templateTodoItem.innerHTML = `
+    <li class="item">
+        <input type="checkbox">
+        <label></label>
+        <button class="destroy">x</button>
+    </li>
+`;
+
 class TodoItem extends HTMLElement {
     constructor() {
         super();
@@ -8,13 +17,7 @@ class TodoItem extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `
-            <li class="item">
-                <input type="checkbox">
-                <label></label>
-                <button class="destroy">x</button>
-            </li>
-        `
+        this.appendChild(templateTodoItem.content.cloneNode(true));
         this.$item = this.querySelector('.item');
         this.$removeButton = this.querySelector('.destroy');
         this.$text = this.querySelector('label');
