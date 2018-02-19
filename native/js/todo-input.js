@@ -1,3 +1,10 @@
+const templateTodoInput = document.createElement('template');
+templateTodoInput.innerHTML = `
+    <form id="new-todo-form">
+        <input id="new-todo" type="text" placeholder="What needs to be done?">
+    </form>
+`;
+
 class TodoInput extends HTMLElement {
     constructor() {
         super();
@@ -7,11 +14,7 @@ class TodoInput extends HTMLElement {
 
     connectedCallback() {
         console.log('TodoInput ADDED TO THE DOM');
-        this.innerHTML = `
-            <form id="new-todo-form">
-                <input id="new-todo" type="text" placeholder="What needs to be done?">
-            </form>
-        `
+        this.appendChild(templateTodoInput.content.cloneNode(true));
         this.$form = this.querySelector('form');
         this.$input = this.querySelector('input');
         this.$form.addEventListener("submit", (e) => {

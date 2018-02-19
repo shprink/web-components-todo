@@ -1,3 +1,11 @@
+const templateTodo = document.createElement('template');
+templateTodo.innerHTML = `
+    <section>
+        <todo-input></todo-input>
+        <ul id="list-container"></ul>
+    </section>
+`;
+
 class MyTodo extends HTMLElement {
     constructor() {
         super();
@@ -11,12 +19,7 @@ class MyTodo extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `
-            <section>
-                <todo-input></todo-input>
-                <ul id="list-container"></ul>
-            </section>
-        `;
+        this.appendChild(templateTodo.content.cloneNode(true));
         this.$input = this.querySelector('todo-input');
         this.$listContainer = this.querySelector('#list-container');
         this.$input.addEventListener('onSubmit', this.addItem.bind(this));
