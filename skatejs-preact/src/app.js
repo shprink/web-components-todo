@@ -4,7 +4,7 @@ import { props } from "skatejs/dist/esnext";
 import { h } from "preact";
 import { Component } from "./util";
 
-export default class App extends Component {
+export default class extends Component {
   state = {
     list: [
       { text: "my initial todo", checked: false },

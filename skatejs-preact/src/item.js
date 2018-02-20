@@ -4,7 +4,7 @@ import { props } from "skatejs/dist/esnext";
 import { h } from "preact";
 import { Component } from "./util";
 
-export default class Item extends Component {
+export default class extends Component {
   static events = ["check", "remove"];
   static props = {
     checked: props.boolean,
