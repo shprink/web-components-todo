@@ -10,7 +10,7 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 * [Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
 * [StencilJS](https://wc-todo.firebaseapp.com/stencil)
 * [Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)
-* [Vue](https://wc-todo.firebaseapp.com/vue)
+* [Vue Web Component Wrapper](https://wc-todo.firebaseapp.com/vue)
 * [SkateJS + Lit-Html](https://wc-todo.firebaseapp.com/skatejs-lit-html)
 * [SkateJS + Preact](https://wc-todo.firebaseapp.com/skatejs-preact)
 
