@@ -2,8 +2,8 @@ import { Component, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'todo-input',
-  styleUrl: 'todo-input.scss',
-  shadow: true,
+  styleUrl: 'todo-input.css',
+  // shadow: true,
 })
 export class TodoInput {
   @Event() onTodoInputSubmit: EventEmitter;

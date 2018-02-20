@@ -3,8 +3,8 @@ import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'todo-item',
-  styleUrl: 'todo-item.scss',
-  shadow: true,
+  styleUrl: 'todo-item.css',
+  // shadow: true,
 })
 export class TodoItem {
   @Prop() checked: boolean;

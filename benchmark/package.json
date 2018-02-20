@@ -1,0 +1,16 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-launcher": "^0.10.2",
+    "lighthouse": "^2.9.1",
+    "lodash": "^4.17.5"
+  }
+}

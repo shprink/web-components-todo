@@ -33,7 +33,7 @@ export default class extends Component {
         }
 
         h1 {
-          font-size: 100px;
+          font-size: 60px;
           font-weight: 100;
           text-align: center;
           color: rgba(175, 47, 47, 0.15);
@@ -53,7 +53,7 @@ export default class extends Component {
           border-top: 1px solid #e6e6e6;
         }
       </style>
-      <h1>SkateJS</h1>
+      <h1>SkateJS & lit-html</h1>
       <section>
         <todo-input on-submit="${handleSubmit}"></todo-input>
         <ul id="list-container">

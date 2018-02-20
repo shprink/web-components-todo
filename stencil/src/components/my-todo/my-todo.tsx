@@ -7,8 +7,8 @@ interface TodoItem {
 
 @Component({
   tag: 'my-todo',
-  styleUrl: 'my-todo.scss',
-  shadow: true,
+  styleUrl: 'my-todo.css',
+  // shadow: true,
 })
 export class MyTodo {
   @State() list: TodoItem[] = [
