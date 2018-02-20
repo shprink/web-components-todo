@@ -6,6 +6,7 @@
     "test": "nightwatch",
     "deploy": "firebase deploy && firebase open hosting:site",
     "serve": "http-server ./dist",
+    "benchmark": "cd benchmark && npm start",
     "build:index": "cp ./index.html ./dist",
     "build:native": "rm -fr ./dist/native && cp -R ./native-shadow-dom ./dist/native",
     "build:polymer": "cd polymer && polymer build && rm -fr ../dist/polymer2 && mv build/es6-bundled ../dist/polymer2",
@@ -13,8 +14,9 @@
     "build:skatejs:lit-html": "cd skatejs-lit-html && npm run build && rm -fr ../dist/skatejs-lit-html && mkdir ../dist/skatejs-lit-html && mv dist ../dist/skatejs-lit-html && cp index.html ../dist/skatejs-lit-html",
     "build:skatejs:preact": "cd skatejs-preact && npm run build && rm -fr ../dist/skatejs-preact && mkdir ../dist/skatejs-preact && mv dist ../dist/skatejs-preact && cp index.html ../dist/skatejs-preact",
     "build:stencil": "cd stencil && npm run build && rm -fr ../dist/stencil && mv www ../dist/stencil",
+    "build:stencil:prerendered": "cd stencil && npm run build:prerendered && rm -fr ../dist/stencil-prerendered && mv www ../dist/stencil-prerendered",
     "build:vue": "cd vue && npm run build && rm -fr ../dist/vue && mv dist ../dist/vue",
-    "build:all": "npm run build:index && npm run build:native && npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:vue && npm run build:skatejs:lit-html && npm run build:skatejs:preact"
+    "build:all": "npm run build:index && npm run build:native && npm run build:polymer && npm run build:angular && npm run build:stencil && npm run build:stencil:prerendered && npm run build:vue && npm run build:skatejs:lit-html && npm run build:skatejs:preact"
   },
   "repository": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git",
   "author": "shprink <julien.renaux@gmail.com>",

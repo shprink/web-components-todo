@@ -8,6 +8,7 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 
 * [Native Web Component](https://wc-todo.firebaseapp.com/native)
 * [Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
+* [StencilJS with prerendering (default setting)](https://wc-todo.firebaseapp.com/stencil-prerendered)
 * [StencilJS](https://wc-todo.firebaseapp.com/stencil)
 * [Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)
 * [Vue Web Component Wrapper](https://wc-todo.firebaseapp.com/vue)
