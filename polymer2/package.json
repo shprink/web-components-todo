@@ -1,0 +1,14 @@
+{
+  "name": "polymer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "polymer build"
+  },
+  "author": "",
+  "license": "MIT"
+}

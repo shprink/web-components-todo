@@ -110,7 +110,9 @@ export default class extends Component {
       </style>
       <li class="${checked ? "completed" : ""}">
         <input type="checkbox" checked="${checked}" on-change="${handleCheck}" />
-        <label><slot></slot></label>
+        <label>
+          <slot></slot>
+        </label>
         <button on-click="${handleRemove}">x</button>
       </li>
     `;
