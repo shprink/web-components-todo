@@ -17,4 +17,4 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 
 ## <todo-item> syntax differences
 
-![stencil_vs_wc](https://user-images.githubusercontent.com/1388706/36536346-ef78c996-17cc-11e8-9cd0-d6170db8a150.png)
+![stencil_vs_wc](https://user-images.githubusercontent.com/1388706/36589944-426428b0-188d-11e8-8ce1-b0b3f39ca9d9.png)
