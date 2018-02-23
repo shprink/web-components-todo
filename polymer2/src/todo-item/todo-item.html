@@ -104,17 +104,9 @@
       static get is() { return 'todo-item'; }
       static get properties() {
         return {
-          checked: {
-            type: Boolean,
-            value: false
-          },
-          index: {
-            type: Number,
-          },
-          text: {
-            type: String,
-            value: ''
-          }
+          checked: { type: Boolean, value: false },
+          index: { type: Number, },
+          text: { type: String, value: '' }
         };
       }
       handleOnRemove(e) {

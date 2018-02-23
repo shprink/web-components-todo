@@ -28,7 +28,7 @@ const flags = {
     chromeFlags: ['--headless']
 };
 
-const endpoints = ['native', 'stencil', 'stencil-prerendered', 'polymer2', 'angular-elements', 'vue', 'skatejs-lit-html', 'skatejs-preact'];
+const endpoints = ['native', 'stencil', 'stencil-prerendered', 'polymer2', 'polymer3', 'angular-elements', 'vue', 'skatejs-lit-html', 'skatejs-preact'];
 const results = {};
 const tryNumber = 5;
 
