@@ -1,0 +1,30 @@
+{
+    "name": "polymer3",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "flat": true,
+    "scripts": {
+        "build": "npm run build-polymer && npm run build-es6 && npm run minify-es6",
+        "build-polymer": "polymer build",
+        "postbuild-polymer": "rm -rf build/es6-bundled/node_modules && rm -rf build/es6-bundled/src/*",
+        "build-es6": "rollup -c rollup.config.js",
+        "minify-es6": "uglifyjs build/es6-bundled/src_tmp/index.js -o build/es6-bundled/src/index.js -c -m",
+        "postminify-es6": "rm -rf build/es6-bundled/src_tmp"
+    },
+    "dependencies": {
+        "@polymer/iron-form": "^3.0.0-pre.8",
+        "@polymer/iron-input": "^3.0.0-pre.8",
+        "@polymer/polymer": "^3.0.0-pre.9",
+        "@webcomponents/webcomponentsjs": "^1.1.0"
+    },
+    "resolutions": {
+        "@webcomponents/webcomponentsjs": "1.1.0",
+        "@polymer/polymer": "3.0.0-pre.9"
+    },
+    "devDependencies": {
+        "rollup": "^0.56.2",
+        "rollup-plugin-node-resolve": "^3.0.3",
+        "uglify-es": "^3.3.9"
+    }
+}
