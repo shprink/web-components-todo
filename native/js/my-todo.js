@@ -38,10 +38,9 @@ class MyTodo extends HTMLElement {
 
     toggleItem(e) {
         const item = this._list[e.detail];
-        this._list[e.detail] = {
-            ...item,
+        this._list[e.detail] = Object.assign({}, item, {
             checked: !item.checked
-        };
+        });
         this._render();
     }
 

@@ -29,7 +29,7 @@ templateTodo.innerHTML = `
     </section>
 `;
 
-class MyTodo extends HTMLElement {
+export default class MyTodo extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ 'mode': 'open' });
@@ -60,10 +60,9 @@ class MyTodo extends HTMLElement {
 
     toggleItem(e) {
         const item = this._list[e.detail];
-        this._list[e.detail] = {
-            ...item,
+        this._list[e.detail] = Object.assign({}, item, {
             checked: !item.checked
-        };
+        });
         this._render();
     }
 
@@ -85,4 +84,4 @@ class MyTodo extends HTMLElement {
     }
 }
 
-window.customElements.define('my-todo', MyTodo);
+

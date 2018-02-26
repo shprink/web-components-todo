@@ -97,7 +97,7 @@ templateTodoItem.innerHTML = `
     </li>
 `;
 
-class TodoItem extends HTMLElement {
+export default class TodoItem extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ 'mode': 'open' });
@@ -152,5 +152,3 @@ class TodoItem extends HTMLElement {
 
     }
 }
-
-window.customElements.define('todo-item', TodoItem);

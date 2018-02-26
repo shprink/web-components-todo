@@ -32,7 +32,7 @@ templateTodoInput.innerHTML = `
     </form>
 `;
 
-class TodoInput extends HTMLElement {
+export default class TodoInput extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ 'mode': 'open' });
@@ -55,5 +55,3 @@ class TodoInput extends HTMLElement {
         console.log('TodoInput REMOVED TO THE DOM');
     }
 }
-
-window.customElements.define('todo-input', TodoInput);
