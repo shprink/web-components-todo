@@ -22,6 +22,8 @@
   /* Mobile Safari */
   -webkit-appearance: none;
   appearance: none;
+  padding: 0;
+  box-shadow: none;
   }
 
   li input:after {
