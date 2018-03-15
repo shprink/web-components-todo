@@ -1,6 +1,6 @@
 <li class={{ checked ? 'completed' : '' }}>
     <input type="checkbox" checked='{{checked}}' on:change='handleOnChecked(event)' />
-    <label>{{text}} ({{index}})</label>
+    <label>{{text}}</label>
     <button on:click='handleOnRemove(event)'>x</button>
 </li>
 
@@ -101,6 +101,7 @@
 <script>
     export default {
         tag: 'todo-item',
+        props: ['text', 'checked', 'index'],
 
         methods: {
             handleOnChecked: function (e) {
