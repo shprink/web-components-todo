@@ -1,0 +1,71 @@
+<h1>Todos Svelte</h1>
+<section>
+    <TodoInput on:add='addTodo(event)'></TodoInput>
+	<ul id="list-container">
+        {{#each list as item, index}}
+            <TodoItem bind:checked='item.checked' bind:text='item.text' bind:index='index' on:checked='checkTodo(event)' on:remove='removeTodo(event)' ></TodoItem>
+        {{/each}}
+	</ul>
+</section>
+
+<style>
+	:host {
+		display: block;
+	}
+
+	h1 {
+		font-size: 100px;
+		font-weight: 100;
+		text-align: center;
+		color: rgba(175, 47, 47, 0.15);
+	}
+
+	section {
+		background: #fff;
+		margin: 130px 0 40px 0;
+		position: relative;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	#list-container {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid #e6e6e6;
+	}
+</style>
+
+<script>
+	import TodoInput from './TodoInput.html';
+	import TodoItem from './TodoItem.html';
+
+	export default {
+		tag: 'my-todo',
+        components: { TodoInput, TodoItem },
+
+        data() {
+            return {
+                list: [
+                    { text: 'my initial todo', checked: false },
+                    { text: 'Learn about Web Components', checked: true }
+                ]
+            };
+        },
+
+        methods: {
+            addTodo: function (text) {
+                this.list = [...this.list, { text: text, checked: false, }];
+            },
+            checkTodo: function (index) {
+                const list = [...this.list];
+                console.log(this.list, index);
+                const item = list[index];
+                list[index] = Object.assign({}, item, { checked: !item.checked });
+                this.list = list;
+            },
+            removeTodo: function (index) {
+                this.list = [...this.list.slice(0, index), ...this.list.slice(index + 1)];
+            }
+        }
+	};
+</script>
