@@ -101,7 +101,8 @@ export default class TodoItem extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ 'mode': 'open' });
-        this._checked = false;
+        this._checked = this.checked;
+        this._index = this.index;
         this._text = '';
     }
     connectedCallback() {
