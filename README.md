@@ -10,6 +10,7 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 * [Polymer 2](https://wc-todo.firebaseapp.com/polymer2)
 * [Polymer 3](https://wc-todo.firebaseapp.com/polymer3)
 * [Slim.js](https://wc-todo.firebaseapp.com/slimjs)
+* [Lit-Element](https://wc-todo.firebaseapp.com/lit-element)
 * [StencilJS with prerendering (default setting)](https://wc-todo.firebaseapp.com/stencil-prerendered)
 * [StencilJS](https://wc-todo.firebaseapp.com/stencil)
 * [Angular Elements](https://wc-todo.firebaseapp.com/angular-elements)

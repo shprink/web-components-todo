@@ -58,7 +58,6 @@
             },
             checkTodo: function (index) {
                 const list = [...this.list];
-                console.log(this.list, index);
                 const item = list[index];
                 list[index] = Object.assign({}, item, { checked: !item.checked });
                 this.list = list;
