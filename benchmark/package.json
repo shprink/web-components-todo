@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "build:filesize": "node ./filesize.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "ascii-horizontal-barchart": "^1.3.3",
     "chrome-launcher": "^0.10.2",
     "lighthouse": "^2.9.1",
     "lodash": "^4.17.5"

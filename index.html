@@ -21,30 +21,44 @@
     <p>Repo:
         <a href="https://github.com/shprink/web-components-todo" target="_blank">github.com/shprink/web-components-todo</a>
     </p>
-    <p>The demos do not use any Polyfill for benchmarks purpose. Please use Chrome</p>
+    <p>The demos do not use any Polyfill for benchmarks purpose. <br /> Please use Chrome, Safari or Firefox > v63</p>
     <h3>Reference: <a href="./native">Native Web Component</a></h3>
 
     <ul style="list-style: none; padding: 0;">
         <li>
             <a href="./stencil">StencilJS</a>
+            <small>[<a href="https://stenciljs.com" target="_blank">Docs</a>]</small>
         </li>
         <li>
             <a href="./stencil-prerendered">StencilJS With prerendering enabled</a>
+            <small>[<a href="https://stenciljs.com" target="_blank">Docs</a>]</small>
         </li>
         <li>
             <a href="./lit-element">Lit-Element</a>
+            <small>[<a href="https://github.com/Polymer/lit-element" target="_blank">Docs</a>]</small>
         </li>
         <li>
             <a href="./skatejs-lit-html">SkateJS + LitHTML</a>
+            <small>[<a href="https://github.com/skatejs/skatejs" target="_blank">Docs</a>]</small>
         </li>
         <li>
             <a href="./skatejs-preact">SkateJS + Preact</a>
+            <small>[<a href="https://github.com/skatejs/skatejs" target="_blank">Docs</a>]</small>
         </li>
         <li>
-            <a href="./polymer2">Polymer 2</a>
+            <a href="./svelte">Svelte</a>
+            <small>[<a href="https://svelte.technology/" target="_blank">Docs</a>]</small>
+        </li>
+        <li>
+            <a href="./slimjs/">slimJS</a>
+            <small>[<a href="http://slimjs.com" target="_blank">Docs</a>]</small>
         </li>
         <li>
             <a href="./polymer3">Polymer 3</a>
+            <small>[<a href="https://www.polymer-project.org/3.0/docs/about_30" target="_blank">Docs</a>]</small>
+        </li>
+        <li>
+            <a href="./polymer2">Polymer 2</a>
         </li>
         <li>
             <a href="./angular-elements">Angular Elements</a>
@@ -52,11 +66,20 @@
         <li>
             <a href="./vue">Vue Web Component Wrapper</a>
         </li>
-        <li>
-            <a href="./svelte">Svelte</a>
-        </li>
     </ul>
+    <h3>Analytics</h3>
+    <h4>App size (in bytes)</h4>
 
+<pre style="text-align: left; margin: 0 auto; font-size: 15px; line-height: 20px; max-width: 500px;">
+polymer3         ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 130848
+lit-element      ▉▉▉▉▉▉▊ 29142
+slimjs           ▉▉▉▉▉▉▎ 27173
+stencil          ▉▉▉▉▉▉▎ 27072
+skatejs-preact   ▉▉▉▉▉ 21224
+skatejs-lit-html ▉▉▉▉▍ 19481
+svelte           ▉▉▎ 9712
+native           ▉▊ 7973
+</pre>
 
     <style>
         html,

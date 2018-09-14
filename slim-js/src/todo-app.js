@@ -25,8 +25,7 @@ export default class TodoApp extends Slim {
   constructor () {
     super()
     this.list = [
-      { text: 'Do something nice', checked: false },
-      { text: 'Check out slim.js', checked: false },
+      { text: 'my initial todo', checked: false },
       { text: 'Learn about Web Components', checked: true }
     ]
   }

@@ -8,7 +8,7 @@
     "serve": "http-server ./dist",
     "benchmark": "cd benchmark && npm start",
     "build:index": "cp ./index.html ./dist",
-    "build:slimjs": "cd slim-js && npm run build && mv dist ../dist/slimjs",
+    "build:slimjs": "cd slim-js && npm run build && rm -fr ../dist/slimjs && mv dist ../dist/slimjs",
     "build:native": "cd native-shadow-dom && npm run build && rm -fr ../dist/native && mkdir ../dist/native && mv dist ../dist/native && cp index.html ../dist/native",
     "build:lit-element": "cd lit-element && npm run build && rm -fr ../dist/lit-element && mkdir ../dist/lit-element && mv dist ../dist/lit-element && cp index.html ../dist/lit-element",
     "build:polymer2": "cd polymer2 && npm run build && rm -fr ../dist/polymer2 && mv build/es6-bundled ../dist/polymer2",
@@ -19,7 +19,7 @@
     "build:stencil": "cd stencil && npm run build && rm -fr ../dist/stencil && mv www ../dist/stencil",
     "build:stencil:prerendered": "cd stencil && npm run build:prerendered && rm -fr ../dist/stencil-prerendered  && mv www ../dist/stencil-prerendered ",
     "build:vue": "cd vue && npm run build && rm -fr ../dist/vue && mv dist ../dist/vue",
-    "build:svelte": "cd svelte && npm run build && rm -fr ../dist/svelte && mv dist ../dist/svelte",
+    "build:svelte": "cd svelte && npm run build && rm -fr ../dist/svelte && cp -R public ../dist/svelte",
     "build:all": "npm run build:index && npm run build:native && npm run build:polymer2 && npm run build:angular && npm run build:slimjs && npm run build:stencil && npm run build:stencil:prerendered && npm run build:vue && npm run build:skatejs:lit-html && npm run build:skatejs:preact && npm run build:svelte"
   },
   "repository": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git",
