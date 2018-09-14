@@ -1,10 +1,14 @@
 <h1>Todos Svelte</h1>
 <section>
-    <TodoInput on:add='addTodo(event)'></TodoInput>
+	<TodoInput on:add='addTodo(event)'></TodoInput>
 	<ul id="list-container">
-        {{#each list as item, index}}
-            <TodoItem bind:checked='item.checked' bind:text='item.text' bind:index='index' on:checked='checkTodo(event)' on:remove='removeTodo(event)' ></TodoItem>
-        {{/each}}
+		{#each list as item, index (item.id)}
+			<TodoItem
+				bind:checked='item.checked'
+				bind:text='item.text'
+				on:remove='removeTodo(index)'
+			></TodoItem>
+		{/each}
 	</ul>
 </section>
 
@@ -39,6 +43,8 @@
 	import TodoInput from './TodoInput.html';
 	import TodoItem from './TodoItem.html';
 
+	let uid = 1;
+
 	export default {
 		tag: 'my-todo',
         components: { TodoInput, TodoItem },
@@ -46,21 +52,15 @@
         data() {
             return {
                 list: [
-                    { text: 'my initial todo', checked: false },
-                    { text: 'Learn about Web Components', checked: true }
+                    { id: uid++, text: 'my initial todo', checked: false },
+                    { id: uid++, text: 'Learn about Web Components', checked: true }
                 ]
             };
         },
 
         methods: {
             addTodo: function (text) {
-                this.list = [...this.list, { text: text, checked: false, }];
-            },
-            checkTodo: function (index) {
-                const list = [...this.list];
-                const item = list[index];
-                list[index] = Object.assign({}, item, { checked: !item.checked });
-                this.list = list;
+                this.list = [...this.list, { id: uid++, text, checked: false, }];
             },
             removeTodo: function (index) {
                 this.list = [...this.list.slice(0, index), ...this.list.slice(index + 1)];
