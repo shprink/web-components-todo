@@ -16,6 +16,7 @@ Comparison on how to update DOM, pass attributes/properties and dispatch/listen 
 * [Vue Web Component Wrapper](https://wc-todo.firebaseapp.com/vue)
 * [SkateJS + Lit-Html](https://wc-todo.firebaseapp.com/skatejs-lit-html)
 * [SkateJS + Preact](https://wc-todo.firebaseapp.com/skatejs-preact)
+* [Svelte](https://wc-todo.firebaseapp.com/svelte/)
 
 ## <todo-item> syntax differences
 

@@ -1,7 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -34,6 +34,6 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify bundle
-		production && uglify()
+		production && terser()
 	]
 };
