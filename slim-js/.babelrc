@@ -1,0 +1,14 @@
+{
+  "presets": [[
+    "@babel/preset-env",
+    {
+      "targets": {
+        "esmodules": true
+      },
+      "useBuiltIns": "usage"
+    }
+  ]],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+  ]
+}
