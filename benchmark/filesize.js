@@ -1,5 +1,8 @@
 const fs = require("fs");
+const zlib = require('zlib');
 const chart = require('ascii-horizontal-barchart')
+const { gzip, ungzip } = require('node-gzip');
+
 const stencilInfo = require("../dist/stencil/build/app/app.registry.json");
 
 const projects = [{
@@ -28,9 +31,24 @@ const projects = [{
     paths: ['svelte/bundle.js']
 }];
 
-const stats = projects.reduce((previous, project) => {
+let stats = projects.reduce((previous, project) => {
     previous[project.name] = project.paths.reduce((previous, current) => {
         return previous + fs.statSync(`../dist/${current}`).size
+    }, 0);
+    return previous;
+}, {})
+
+
+console.log(stats)
+console.log(chart(stats, true, 30))
+
+// Gzipped
+stats = projects.reduce((previous, project) => {
+    previous[project.name] = project.paths.reduce((previous, current) => {
+        const fileContents = fs.readFileSync(`../dist/${current}`)
+        const zippedContent = zlib.gzipSync(fileContents.toString());
+        fs.writeFileSync(`../dist/${current}.gzip`, zippedContent)
+        return previous + fs.statSync(`../dist/${current}.gzip`).size
     }, 0);
     return previous;
 }, {})
