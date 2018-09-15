@@ -1,7 +1,6 @@
 const fs = require("fs");
 const zlib = require('zlib');
 const chart = require('ascii-horizontal-barchart')
-const { gzip, ungzip } = require('node-gzip');
 
 const stencilInfo = require("../dist/stencil/build/app/app.registry.json");
 
@@ -29,6 +28,9 @@ const projects = [{
 }, {
     name: 'svelte',
     paths: ['svelte/bundle.js']
+}, {
+    name: 'angular',
+    paths: ['angular/main.7a34ad3d218688b46c3b.js']
 }];
 
 let stats = projects.reduce((previous, project) => {
