@@ -21,7 +21,8 @@
     "build:stencil:prerendered": "cd stencil && npm run build:prerendered && rm -fr ../dist/stencil-prerendered  && mv www ../dist/stencil-prerendered ",
     "build:vue": "cd vue && npm run build && rm -fr ../dist/vue && mv dist ../dist/vue",
     "build:svelte": "cd svelte && npm run build && rm -fr ../dist/svelte && cp -R public ../dist/svelte",
-    "build:all": "npm run build:index && npm run build:native && npm run build:polymer2 && npm run build:angular-elements && npm run build:angular && npm run build:slimjs && npm run build:stencil && npm run build:stencil:prerendered && npm run build:vue && npm run build:skatejs:lit-html && npm run build:skatejs:preact && npm run build:svelte"
+    "build:atomico": "cd atomico && npm run build && rm -fr ../dist/atomico && cp -R public ../dist/atomico",
+    "build:all": "npm run build:index && npm run build:native && npm run build:polymer2 && npm run build:angular-elements && npm run build:angular && npm run build:slimjs && npm run build:stencil && npm run build:stencil:prerendered && npm run build:vue && npm run build:skatejs:lit-html && npm run build:skatejs:preact && npm run build:svelte && npm run build:atomico"
   },
   "repository": "git+https://github.com/shprink/WC-Polymer-Stencil-todo.git",
   "author": "shprink <julien.renaux@gmail.com>",
