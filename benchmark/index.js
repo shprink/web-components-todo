@@ -28,9 +28,9 @@ const flags = {
     chromeFlags: ['--headless']
 };
 
-const endpoints = ['native', 'stencil', 'stencil-prerendered', 'lit-element', 'polymer2', 'polymer3', 'angular-elements', 'vue', 'skatejs-lit-html', 'skatejs-preact', 'svelte', 'slimjs'];
+const endpoints = ['native', 'stencil', 'stencil-prerendered', 'lit-element', 'polymer3', 'skatejs-lit-html', 'skatejs-preact', 'svelte', 'slimjs', 'atomico'];
 const results = {};
-const tryNumber = 5;
+const tryNumber = 3;
 
 let promises = Promise.resolve();
 for (let i = 0; i < endpoints.length; i++) {

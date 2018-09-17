@@ -10,7 +10,7 @@ export default class extends Element {
     }
     render() {
         return (
-            <div class="group">
+            <li class={this.props.checked ? 'completed' : ''}>
                 <style>{style}</style>
                 <input
                     type="checkbox"
@@ -19,7 +19,7 @@ export default class extends Element {
                     }}
                     checked={this.props.checked}
                 />
-                <div class="text">{this.props.text}</div>
+                <label>{this.props.text}</label>
                 <button
                     click={() => {
                         this.dispatch("remove");
@@ -27,7 +27,7 @@ export default class extends Element {
                 >
                     x
                 </button>
-            </div>
+            </li>
         );
     }
 }

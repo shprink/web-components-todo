@@ -4,57 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Component</title>
+	<title>Atomico todo</title>
     <style>
-    html,body{
-        width:100%;
-        height:100%;
-    }
-    body{
-        margin:0px;
-        font:14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        line-height: 1.4em;
-        background: #f5f5f5;
-        padding : 1rem;
-        box-sizing: border-box;
-    }
-    h1{
-        font-size: 100px;
-        font-weight: 100;
-        text-align: center;
-        line-height: initial;
-        color: rgba(175, 47, 47, 0.15);
-    }
-    atom-todo{
-        max-width : 520px;
-        margin:0px auto;
-    }
-    header{
-        text-align:center;
-        padding : 50px 0px;
-    }
-    .group{
-        margin: 50px 0px;
-    }
-    </style> 
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#back {
+			margin: 50px 0;
+			display: block;
+		}
+
+		body {
+			font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			line-height: 1.4em;
+			background: #f5f5f5;
+			color: #4d4d4d;
+			min-width: 230px;
+			max-width: 550px;
+			margin: 0 auto;
+			font-weight: 300;
+		}
+    </style>
 </head>
 <body>
-    <!--
-    <h1>
-    Todos Atomico
-    </h1>
-    -->
-    <header>
-        <a href="../" id="back">⬅ Back to other implementations</a>
-        <br>
-        <br>
-        <a href="https://github.com/uppercod/atomico">
-            <img class="logo" src="logo.png" width="220px">
-        </a>
-    </header>
+	<a href="../" id="back">⬅ Back to other implementations</a>
     <atom-todo></atom-todo>
     <!--init:require-->
-    <script src="https://unpkg.com/atomico@0.1.0/dist/atomico.umd.js"></script>
+    <script src="atomico.umd.js"></script>
     <script src="atom-todo.iife.js"></script>
     <!--end:require-->
 </body>

@@ -29,8 +29,11 @@ const projects = [{
     name: 'svelte',
     paths: ['svelte/bundle.js']
 }, {
-    name: 'angular',
-    paths: ['angular/main.7a34ad3d218688b46c3b.js']
+//     name: 'angular',
+//     paths: ['angular/main.7a34ad3d218688b46c3b.js']
+// }, {
+    name: 'atomico',
+    paths: ['atomico/atomico.umd.js', 'atomico/atom-todo.iife.js']
 }];
 
 let stats = projects.reduce((previous, project) => {

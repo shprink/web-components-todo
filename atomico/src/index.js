@@ -20,47 +20,50 @@ export default class TagTodo extends Element {
     render() {
         let { list = [] } = this.state;
         return (
-            <div class="group">
-                <style>{style}</style>
-                <atom-todo-input
-                    placeholder="What needs to be done?"
-                    create={({ detail }) => {
-                        this.setState({
-                            list: list.concat({
-                                text: detail.text,
-                                checked: false
-                            })
-                        });
-                    }}
-                />
-                <div>
-                    {list.map(({ text, checked }, localIndex) => (
-                        <atom-todo-item
-                            text={text}
-                            checked={checked}
-                            remove={() => {
-                                this.setState({
-                                    list: list.filter(
-                                        (data, index) => index !== localIndex
-                                    )
-                                });
-                            }}
-                            toggle={() => {
-                                this.setState({
-                                    list: list.map(
-                                        (data, index) =>
-                                            index === localIndex
-                                                ? {
-                                                      ...data,
-                                                      checked: !data.checked
-                                                  }
-                                                : data
-                                    )
-                                });
-                            }}
-                        />
-                    ))}
-                </div>
+            <div>
+                <h1>Todos Atomico</h1>
+                <section>
+                    <style>{style}</style>
+                    <atom-todo-input
+                        placeholder="What needs to be done?"
+                        create={({ detail }) => {
+                            this.setState({
+                                list: list.concat({
+                                    text: detail.text,
+                                    checked: false
+                                })
+                            });
+                        }}
+                    />
+                    <div id="list-container">
+                        {list.map(({ text, checked }, localIndex) => (
+                            <atom-todo-item
+                                text={text}
+                                checked={checked}
+                                remove={() => {
+                                    this.setState({
+                                        list: list.filter(
+                                            (data, index) => index !== localIndex
+                                        )
+                                    });
+                                }}
+                                toggle={() => {
+                                    this.setState({
+                                        list: list.map(
+                                            (data, index) =>
+                                                index === localIndex
+                                                    ? {
+                                                        ...data,
+                                                        checked: !data.checked
+                                                    }
+                                                    : data
+                                        )
+                                    });
+                                }}
+                            />
+                        ))}
+                    </div>
+                </section>
             </div>
         );
     }

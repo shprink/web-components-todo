@@ -7,6 +7,7 @@ import pkg from "./package.json";
 import colors from "colors";
 import prepare from "rollup-prepare";
 import postcss from "rollup-plugin-postcss";
+import copy from 'rollup-plugin-copy';
 import cssnano from "cssnano";
 
 export default {
@@ -38,6 +39,10 @@ function plugins(classes = true) {
             objectAssign: "Object.assign"
         }),
         terser(),
+        copy({
+            "node_modules/atomico/dist/atomico.umd.js": "public/atomico.umd.js",
+            verbose: true
+        }),
         filesize({
             /**
              * allows to generate the printing of the output size of each file
