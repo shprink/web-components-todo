@@ -3,6 +3,8 @@ const zlib = require('zlib');
 const chart = require('ascii-horizontal-barchart')
 
 const stencilInfo = require("../dist/stencil/build/app/app.registry.json");
+const reactInfo = require("../dist/react/asset-manifest.json");
+
 
 const projects = [{
     name: 'lit-element',
@@ -29,11 +31,14 @@ const projects = [{
     name: 'svelte',
     paths: ['svelte/bundle.js']
 }, {
-//     name: 'angular',
-//     paths: ['angular/main.7a34ad3d218688b46c3b.js']
-// }, {
     name: 'atomico',
     paths: ['atomico/atomico.umd.js', 'atomico/atom-todo.iife.js']
+}, {
+    name: 'angular',
+    paths: ['angular/main.7a34ad3d218688b46c3b.js']
+}, {
+    name: 'react',
+    paths: [`react/${reactInfo['main.js']}`]
 }];
 
 let stats = projects.reduce((previous, project) => {
