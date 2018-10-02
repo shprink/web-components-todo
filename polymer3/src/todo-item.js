@@ -13,7 +13,7 @@ export class TodoItem extends PolymerElement {
         return `
             <style include="todo-item-style-element"></style>
             <li class$="item [[isCompleted(checked)]]">
-                <input type="checkbox" on-click="handleOnToggle">
+                <input type="checkbox" checked=[[checked]] on-click="handleOnToggle">
                 <label>[[text]]</label>
                 <button class="destroy" on-click="handleOnRemove">x</button>
             </li>
