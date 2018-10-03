@@ -16,24 +16,19 @@ export class MyTodo extends PolymerElement {
       <section>
         <todo-input></todo-input>
         <ul id="list-container">
-          <template is="dom-repeat" items="{{list}}">
-            <todo-item text="{{item.text}}" checked="{{item.checked}}" index="{{index}}" on-remove="removeItem" on-toggle="toggleItem"></todo-item>
+          <template is="dom-repeat" items="[[list]]">
+            <todo-item text="[[item.text]]" checked="[[item.checked]]" index="[[index]]" on-remove="removeItem" on-toggle="toggleItem"></todo-item>
           </template>
         </ul>
       </section>
     `
   }
 
-  constructor() {
-    super();
-    this.name = '3.0';
-  }
-
   static get properties() {
     return {
       list: {
         type: Array,
-        value: [
+        value: () => [
           { text: 'my initial todo', checked: false },
           { text: 'Learn about Web Components', checked: true }
         ]
@@ -48,18 +43,15 @@ export class MyTodo extends PolymerElement {
   }
 
   addItem(e) {
-    this.set('list', [...this.list, { text: e.detail, checked: false, }]);
+    this.push('list', { text: e.detail, checked: false });
   }
 
   removeItem(e) {
-    this.set('list', [...this.list.slice(0, e.detail), ...this.list.slice(e.detail + 1)]);
+    this.splice('list', e.detail, 1);
   }
 
   toggleItem(e) {
-    const list = [...this.list];
-    const item = list[e.detail];
-    list[e.detail] = Object.assign({}, item, { checked: !item.checked });
-    this.set('list', list);
+    this.set('list.'+e.detail, { ...this.list[e.detail], checked: !this.list[e.detail].checked });
   }
 }
 

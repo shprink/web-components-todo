@@ -13,23 +13,23 @@ export class TodoItem extends PolymerElement {
         return `
             <style include="todo-item-style-element"></style>
             <li class$="item [[isCompleted(checked)]]">
-                <input type="checkbox" value="{{checked}}" checked="{{checked::change}}">
-                <label>{{text}}</label>
+                <input type="checkbox" checked=[[checked]] on-click="handleOnToggle">
+                <label>[[text]]</label>
                 <button class="destroy" on-click="handleOnRemove">x</button>
             </li>
         `
     }
     static get properties() {
         return {
-            checked: { type: Boolean, value: false },
-            index: { type: Number, },
-            text: { type: String, value: '' }
+            checked: { type: Boolean },
+            index: { type: Number },
+            text: { type: String }
         }
     }
     handleOnRemove(e) {
         this.dispatchEvent(new CustomEvent('remove', { detail: this.index }));
     }
-    handleOnChecked(e) {
+    handleOnToggle(e){
         this.dispatchEvent(new CustomEvent('toggle', { detail: this.index }));
     }
     isCompleted(completed) {
