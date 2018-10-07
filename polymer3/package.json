@@ -9,7 +9,7 @@
         "build-polymer": "polymer build",
         "postbuild-polymer": "rm -rf build/es6-bundled/node_modules && rm -rf build/es6-bundled/src/*",
         "build-es6": "rollup -c rollup.config.js",
-        "minify-es6": "uglifyjs build/es6-bundled/src_tmp/index.js -o build/es6-bundled/src/index.js -c -m",
+        "minify-es6": "mkdir -p build/es6-bundled/src/ && uglifyjs build/es6-bundled/src_tmp/index.js -o build/es6-bundled/src/index.js -c -m",
         "postminify-es6": "rm -rf build/es6-bundled/src_tmp"
     },
     "dependencies": {

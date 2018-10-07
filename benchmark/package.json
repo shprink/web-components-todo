@@ -14,5 +14,8 @@
     "chrome-launcher": "^0.10.2",
     "lighthouse": "^2.9.1",
     "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "ejs": "^2.6.1"
   }
 }
