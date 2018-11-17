@@ -10,7 +10,7 @@ import './TodoItem'
 
 const MyTodo = ({ state, handleCheck, handleRemove, handleSubmit }) =>
   <>
-    <style>{(( style ))}</style>
+    <style>{ style }</style>
     <h1>Solid Todo</h1>
     <section>
       <todo-input onSubmit={ handleSubmit } />
@@ -20,9 +20,9 @@ const MyTodo = ({ state, handleCheck, handleRemove, handleSubmit }) =>
       >
         {each(item =>
           <todo-item
-            model={(( item.id ))}
-            checked={ item.checked }
-            textContent={(( item.text ))}
+            model={ item.id }
+            checked={( item.checked )}
+            textContent={ item.text }
           />
         )(() => state.list)}
       </ul>

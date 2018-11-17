@@ -7,13 +7,13 @@ import style from './TodoInput.css'
 
 const TodoInput = ({ state, handleInput, handleSubmit }) =>
   <>
-    <style>{(( style ))}</style>
-    <form onSubmit={handleSubmit}>
+    <style>{ style }</style>
+    <form onSubmit={ handleSubmit }>
       <input
-        value={state.value}
+        value={( state.value )}
         type="text"
         placeholder="What needs to be done?"
-        onInput={handleInput}
+        onInput={ handleInput }
       />
     </form>
   </>

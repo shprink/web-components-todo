@@ -7,8 +7,8 @@ import style from './TodoItem.css'
 
 const TodoItem = ({ state, events }) =>
   <>
-    <style>{(( style ))}</style>
-    <li class={state.checked ? "completed" : ""}>
+    <style>{ style }</style>
+    <li class={( state.checked ? "completed" : "" )}>
       <input type="checkbox" checked={ state.checked } onChange={e => events.trigger('check', !state.checked)} />
       <label>
         <slot />
