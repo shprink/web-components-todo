@@ -1,34 +1,29 @@
-import { register, compose } from 'component-register'
-import { withEvents, withProps } from 'component-register-extensions'
-import { withSolid } from 'solid-components'
-import { r } from 'solid-js/dom'
+import { register, compose } from 'component-register';
+import { withSolid } from 'solid-components';
+import { useState } from 'solid-js';
+import { r } from 'solid-js/dom';
 
-import style from './TodoInput.css'
+import style from './TodoInput.css';
 
-const TodoInput = ({ state, handleInput, handleSubmit }) =>
-  <>
+const TodoInput = (props, element) => {
+  const [state, setState] = useState({ value: '' }),
+    handleSubmit = e => {
+      e.preventDefault();
+      if (!state.value) return;
+      element.trigger('submit', { detail: state.value });
+      setState({ value: '' });
+    };
+  return <>
     <style>{ style }</style>
     <form onSubmit={ handleSubmit }>
       <input
         value={( state.value )}
         type="text"
         placeholder="What needs to be done?"
-        onInput={ handleInput }
+        onInput={({ target: { value } }) => setState({ value })}
       />
     </form>
   </>
+}
 
-compose(
-  register('todo-input'),
-  withSolid({ value: '' }),
-  withEvents,
-  withProps(({ state, events }) => ({
-    handleInput: ({ target: { value } }) => state.set({ value }),
-    handleSubmit: e => {
-      e.preventDefault();
-      if (!state.value) return;
-      events.trigger('submit', state.value);
-      state.set({ value: '' });
-    }
-  }))
-)(TodoInput)
+compose(register('todo-input'), withSolid)(TodoInput)

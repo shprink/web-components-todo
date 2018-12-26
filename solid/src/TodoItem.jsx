@@ -1,23 +1,22 @@
 import { register, compose } from 'component-register'
-import { withEvents } from 'component-register-extensions'
 import { withSolid } from 'solid-components'
 import { r } from 'solid-js/dom'
 
 import style from './TodoItem.css'
 
-const TodoItem = ({ state, events }) =>
+const TodoItem = (props, element) =>
   <>
     <style>{ style }</style>
-    <li class={( state.checked ? "completed" : "" )}>
-      <input type="checkbox" checked={ state.checked } onChange={e => events.trigger('check', !state.checked)} />
+    <li class={( props.checked ? 'completed' : '' )}>
+      <input
+        type="checkbox" checked={ props.checked }
+        onChange={() => element.trigger('check', { detail: !props.checked })}
+      />
       <label>
         <slot />
       </label>
-      <button onClick={e => events.trigger('remove') }>x</button>
+      <button onClick={() => element.trigger('remove') }>x</button>
     </li>
   </>
 
-compose(
-  register('todo-item', { checked: false }),
-  withSolid(), withEvents
-)(TodoItem);
+compose(register('todo-item', { checked: false }), withSolid)(TodoItem);

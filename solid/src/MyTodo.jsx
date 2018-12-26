@@ -1,47 +1,39 @@
-import { register, compose } from 'component-register'
-import { withProps } from 'component-register-extensions'
-import { withSolid } from 'solid-components'
-import { each } from 'solid-js'
-import { r } from 'solid-js/dom'
+import { register, compose } from 'component-register';
+import { withSolid } from 'solid-components';
+import { useState, each } from 'solid-js';
+import { r } from 'solid-js/dom';
 
-import style from './MyTodo.css'
-import './TodoInput'
-import './TodoItem'
+import style from './MyTodo.css';
+import './TodoInput';
+import './TodoItem';
 
-const MyTodo = ({ state, handleCheck, handleRemove, handleSubmit }) =>
-  <>
+let uid = 1;
+const MyTodo = () =>  {
+  const [state, setState] = useState({ list: [
+      { id: uid++, text: "my initial todo", checked: false },
+      { id: uid++, text: "Learn about Web Components", checked: true }
+    ] });
+  return <>
     <style>{ style }</style>
     <h1>Solid Todo</h1>
     <section>
-      <todo-input onSubmit={ handleSubmit } />
+      <todo-input onSubmit={({ detail: text }) =>
+        setState('list', l => [...l, { id: uid++, text, checked: false }])
+      }/>
       <ul id="list-container"
-        onCheck={ handleCheck }
-        onRemove={ handleRemove }
-      >
-        {each(item =>
+        onCheck={({ detail: checked }, id) => setState('list', state.list.findIndex(t => t.id === id), { checked })}
+        onRemove={(e, id) => setState('list', l => l.filter(t => t.id !== id))}
+      >{
+        each(item =>
           <todo-item
             model={ item.id }
             checked={( item.checked )}
             textContent={ item.text }
           />
-        )(() => state.list)}
-      </ul>
+        )(() => state.list)
+      }</ul>
     </section>
   </>
+}
 
-let uid = 1;
-compose(
-  register('my-todo'),
-  withSolid({ list: [
-    { id: uid++, text: "my initial todo", checked: false },
-    { id: uid++, text: "Learn about Web Components", checked: true }
-  ] }),
-  withProps(({ state }) => ({
-    handleCheck: ({ detail: checked }, id) =>
-      state.set('list', state.list.findIndex(t => t.id === id), { checked }),
-    handleRemove: (e, id) =>
-      state.set({list: state.list.filter(t => t.id !== id)}),
-    handleSubmit: ({ detail: text }) =>
-      state.set({ list: [...state.list, { id: uid++, text, checked: false }] })
-  }))
-)(MyTodo)
+compose(register('my-todo'), withSolid)(MyTodo);
