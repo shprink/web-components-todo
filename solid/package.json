@@ -17,11 +17,11 @@
   "dependencies": {
     "s-js": "0.4.9",
     "solid-components": "0.0.5",
-    "solid-js": "0.3.0"
+    "solid-js": "0.3.1"
   },
   "devDependencies": {
     "@babel/core": "7.1.5",
-    "babel-plugin-jsx-dom-expressions": "0.2.1",
+    "babel-plugin-jsx-dom-expressions": "0.3.2",
     "rollup": "^0.67.0",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",

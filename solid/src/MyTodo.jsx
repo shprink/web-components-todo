@@ -1,6 +1,6 @@
 import { register, compose } from 'component-register';
 import { withSolid } from 'solid-components';
-import { useState, each } from 'solid-js';
+import { useState } from 'solid-js';
 import { r } from 'solid-js/dom';
 
 import style from './MyTodo.css';
@@ -23,15 +23,15 @@ const MyTodo = () =>  {
       <ul id="list-container"
         onCheck={({ detail: checked }, id) => setState('list', state.list.findIndex(t => t.id === id), { checked })}
         onRemove={(e, id) => setState('list', l => l.filter(t => t.id !== id))}
-      >{
-        each(item =>
+      >
+        <$ each={ state.list }>{ item =>
           <todo-item
             model={ item.id }
             checked={( item.checked )}
             textContent={ item.text }
           />
-        )(() => state.list)
-      }</ul>
+        }</$>
+      </ul>
     </section>
   </>
 }
