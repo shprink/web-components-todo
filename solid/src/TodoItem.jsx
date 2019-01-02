@@ -1,5 +1,4 @@
-import { register, compose } from 'component-register'
-import { withSolid } from 'solid-components'
+import { Component } from 'solid-components'
 import { r } from 'solid-js/dom'
 
 import style from './TodoItem.css'
@@ -19,4 +18,4 @@ const TodoItem = (props, element) =>
     </li>
   </>
 
-compose(register('todo-item', { checked: false }), withSolid)(TodoItem);
+Component('todo-item', { checked: false }, TodoItem);

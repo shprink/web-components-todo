@@ -9,7 +9,7 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
 	input: 'src/MyTodo.jsx',
 	output: {
-		sourcemap: true,
+		// sourcemap: true,
 		format: 'iife',
 		file: 'public/bundle.js',
 		name: 'app'

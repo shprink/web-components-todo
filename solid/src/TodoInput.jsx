@@ -1,5 +1,4 @@
-import { register, compose } from 'component-register';
-import { withSolid } from 'solid-components';
+import { Component } from 'solid-components';
 import { useState } from 'solid-js';
 import { r } from 'solid-js/dom';
 
@@ -26,4 +25,4 @@ const TodoInput = (props, element) => {
   </>
 }
 
-compose(register('todo-input'), withSolid)(TodoInput)
+Component('todo-input', TodoInput);

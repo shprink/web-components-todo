@@ -15,19 +15,19 @@
     "start": "serve public"
   },
   "dependencies": {
+    "babel-plugin-jsx-dom-expressions": "0.3.5",
     "s-js": "0.4.9",
-    "solid-components": "0.0.5",
-    "solid-js": "0.3.1"
+    "solid-components": "0.0.6",
+    "solid-js": "0.3.3"
   },
   "devDependencies": {
-    "@babel/core": "7.1.5",
-    "babel-plugin-jsx-dom-expressions": "0.3.2",
-    "rollup": "^0.67.0",
-    "rollup-plugin-babel": "4.0.3",
+    "@babel/core": "7.2.2",
+    "rollup": "^1.0.0",
+    "rollup-plugin-babel": "4.2.0",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-terser": "3.0.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-postcss": "^1.6.3",
+    "rollup-plugin-terser": "4.0.1",
     "serve": "^10.0.1"
   }
 }
