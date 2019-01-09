@@ -58,3 +58,6 @@ typings/
 .env
 
 .e2e-results
+
+# functional-element dist
+/functional-element/dist
