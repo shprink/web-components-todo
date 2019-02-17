@@ -1,11 +1,11 @@
 import { Component } from 'solid-components';
-import { useState } from 'solid-js';
+import { createState } from 'solid-js';
 import { r } from 'solid-js/dom';
 
 import style from './TodoInput.css';
 
-const TodoInput = (props, element) => {
-  const [state, setState] = useState({ value: '' }),
+const TodoInput = (props, { element }) => {
+  const [state, setState] = createState({ value: '' }),
     handleSubmit = e => {
       e.preventDefault();
       if (!state.value) return;
@@ -14,7 +14,7 @@ const TodoInput = (props, element) => {
     };
   return <>
     <style>{ style }</style>
-    <form onSubmit={ handleSubmit }>
+    <form onsubmit={ handleSubmit }>
       <input
         value={( state.value )}
         type="text"
