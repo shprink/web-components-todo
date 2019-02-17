@@ -14,7 +14,7 @@ const TodoItem = (props, { element }) =>
       <label>
         <slot />
       </label>
-      <button onClick={() => element.trigger('remove') }>x</button>
+      <button onClick={() => element.trigger('remove')}>x</button>
     </li>
   </>
 
