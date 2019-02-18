@@ -15,7 +15,7 @@
     "start": "serve public"
   },
   "dependencies": {
-    "babel-plugin-jsx-dom-expressions": "0.4.2",
+    "babel-plugin-jsx-dom-expressions": "0.4.4",
     "solid-components": "0.1.0",
     "solid-js": "0.4.0"
   },

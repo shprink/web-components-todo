@@ -14,7 +14,7 @@ const TodoInput = (props, { element }) => {
     };
   return <>
     <style>{ style }</style>
-    <form onsubmit={ handleSubmit }>
+    <form onSubmit={ handleSubmit }>
       <input
         value={( state.value )}
         type="text"
