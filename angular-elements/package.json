@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "ng build",
     "start": "npm run build && http-server ./dist"
   },
   "private": true,
@@ -17,6 +17,7 @@
     "mutation-observer": "^1.0.3",
     "rxjs": "6.1.0",
     "rxjs-compat": "6.1.0",
+    "@types/node": "^10.1.4",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
