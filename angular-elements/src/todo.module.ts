@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,5 +13,12 @@ import { TodoItem } from './todo-item';
   entryComponents: [MyTodo],
 })
 export class TodoModule {
-  ngDoBootstrap() { }
+  constructor(private injector: Injector) {}
+  ngDoBootstrap() { 
+  	const todosEl = createCustomElement(MyTodo, {
+       injector: this.injector,
+    });
+
+    customElements.define('my-todos', todosEl);
+  }
 }
