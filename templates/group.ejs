@@ -1,0 +1,16 @@
+<%- include('row', {project: row}); %>
+<% row.group.forEach(function(project){ %>
+<tr style="opacity: 0.6">
+    <td colspan="3" class="name">
+        |-- <%= project.name %>
+    </td>
+    <td>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar"
+                style="width: <%= Math.floor((project.size / maxSize) * 100)%>%"
+                aria-valuenow="<%= Math.floor((project.size / maxSize) * 100)%>" aria-valuemin="0" aria-valuemax="100">
+                <%= project.size.toFixed(1) %></div>
+        </div>
+    </td>
+</tr>
+<% }); %>
