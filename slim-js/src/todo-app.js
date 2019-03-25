@@ -1,12 +1,37 @@
 import { Slim } from 'slim-js'
+import 'slim-js/directives/repeat';
 import { tag, template, useShadow } from 'slim-js/Decorators';
-import './directives/bind-boolean.js'
-import TodoItem from './components/todo-item';
-import todoInput from './components/todo-input.js';
+import './components/todo-item';
+import './components/todo-input.js';
 
 @tag('todo-app')
 @template(/*html*/`
-  <style>${require('./todo-app.css')}</style>
+<style>
+:host {
+  display: block;
+}
+
+h1 {
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+}
+
+section {
+  background: #fff;
+  margin: 30px 0 40px 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+#list-container {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #e6e6e6;
+}
+</style>
   <div>
     <h1>Todos slim-js</h1>
     <section>
