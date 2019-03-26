@@ -25,7 +25,7 @@
         line-height: initial;
         color: rgba(175, 47, 47, 0.15);
     }
-    atom-todo{
+    atomico-todo{
         max-width : 520px;
         margin:0px auto;
     }
@@ -39,23 +39,15 @@
     </style> 
 </head>
 <body>
-    <!--
-    <h1>
-    Todos Atomico
-    </h1>
-    -->
     <header>
         <a href="../" id="back">⬅ Back to other implementations</a>
         <br>
         <br>
-        <a href="https://github.com/uppercod/atomico">
-            <img class="logo" src="logo.png" width="220px">
+        <a href="https://github.com/atomicojs/core">
+            <img class="logo" src="logo-without-margin.png" width="220px">
         </a>
     </header>
-    <atom-todo></atom-todo>
-    <!--init:require-->
-    <script src="https://unpkg.com/atomico@0.1.0/dist/atomico.umd.js"></script>
-    <script src="atom-todo.iife.js"></script>
-    <!--end:require-->
+    <atomico-todo></atomico-todo>
+    <script src="atomico-todo.iife.js"></script>
 </body>
 </html>
