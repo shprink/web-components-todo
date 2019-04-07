@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "start": "webpack --mode development --watch"
+    "build": "rollup -c",
+    "start": "http-server ."
   },
   "author": "",
   "license": "MIT",
@@ -14,7 +14,11 @@
     "lit-element": "2.1.0"
   },
   "devDependencies": {
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0"
+    "aria-tools": "0.0.4",
+    "http-server": "^0.11.1",
+    "lit-element": "^2.1.0",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-inline-lit-element": "0.0.1",
+    "rollup-plugin-minify-html-literals": "^1.2.2"
   }
 }
