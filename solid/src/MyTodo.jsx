@@ -16,7 +16,7 @@ const MyTodo = () =>  {
     <style>{ style }</style>
     <h1>Solid Todo</h1>
     <section>
-      <todo-input onSubmit={({ detail: text }) =>
+      <todo-input onCreate={({ detail: text }) =>
         setState('list', l => [...l, { id: uid++, text, checked: false }])
       }/>
       <ul id="list-container">

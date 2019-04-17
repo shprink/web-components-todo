@@ -9,7 +9,7 @@ const TodoInput = (props, { element }) => {
     handleSubmit = e => {
       e.preventDefault();
       if (!state.value) return;
-      element.trigger('submit', { detail: state.value });
+      element.trigger('create', { detail: state.value });
       setState({ value: '' });
     };
   return <>
