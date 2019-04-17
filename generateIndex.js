@@ -1,18 +1,24 @@
 const fs = require('fs');
 const ejs = require('ejs');
 const benchmark = require('./benchmark/filesize.js');
-const projectsMetas = require('./benchmark/meta');
+const { legacy, latest } = require('./benchmark/meta');
 
-const metasWithBytes = benchmark.filesizeGzipped(projectsMetas);
-const metasWithKb = metasWithBytes.map((project) => ({
+const latestWithBytes = benchmark.filesizeGzipped(latest);
+const metasWithKb = latestWithBytes.map((project) => ({
     ...project,
     size: project.size / 1000,
+    group: project.group ? benchmark.filesizeGzipped(legacy[project.group]).map((project) => ({
+        ...project,
+        size: project.size / 1000,
+    })) : null,
 }));
+
+console.log('metasWithKb', metasWithKb)
 const maxSize = Math.max(...metasWithKb.map(project => project.size));
 const WCprojects = metasWithKb.filter(project => project.wc);
 const NonWCprojects = metasWithKb.filter(project => !project.wc);
 
-ejs.renderFile('./index.ejs', {
+ejs.renderFile('./templates/index.ejs', {
     WCprojects,
     NonWCprojects,
     maxSize,

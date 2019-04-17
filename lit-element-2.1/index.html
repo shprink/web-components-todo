@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Native Web Component Todo</title>
+    <meta name="Description" content="Native Web Component Todo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#16161d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+
+    <link rel="apple-touch-icon" href="/assets/icon/icon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #back {
+            margin: 50px 0;
+            display: block;
+        }
+
+        body {
+            font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.4em;
+            background: #f5f5f5;
+            color: #4d4d4d;
+            min-width: 230px;
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+
+<body>
+    <a href="../" id="back">⬅ Back to other implementations</a>
+    <my-todo></my-todo>
+    <script src="./dist/main.js"></script>
+</body>
+
+</html>

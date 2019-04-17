@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "build:filesize": "node ./filesize.js"
+    "build:filesize": "node ./filesize.js",
+    "build:lighthouse": "node ./lighthouse.js http://localhost:3000"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "ascii-horizontal-barchart": "^1.3.3",
-    "chrome-launcher": "^0.10.2",
-    "lighthouse": "^2.9.1",
-    "lodash": "^4.17.5"
+    "chrome-launcher": "^0.10.5",
+    "lighthouse": "^4.2.0"
   },
   "devDependencies": {
-    "ejs": "^2.6.1"
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
   }
 }

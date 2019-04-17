@@ -41,21 +41,11 @@
             </thead>
             <tbody>
                 <% WCprojects.forEach(function(project){ %>
-                <tr <% if (project.slug === 'native') { %>class="table-light" <% } %>>
-                    <td class="name"><%= project.name %></td>
-                    <td><a href="<%= project.demo %>">Demo</a></td>
-                    <td>
-                        <% if (project.docs) { %>
-                            <a href="<%= project.docs %>" target="_blank">Docs</a>
-                        <% } %>
-                    </td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: <%= Math.floor((project.size / maxSize) * 100)%>%" aria-valuenow="<%= Math.floor((project.size / maxSize) * 100)%>"
-                                aria-valuemin="0" aria-valuemax="100"><%= project.size.toFixed(1) %></div>
-                        </div>
-                    </td>
-                </tr>
+                    <% if (project.group) { %>
+                        <%- include('group', {row: project}); %>
+                    <% } else { %>
+                        <%- include('row', {project: project}); %>
+                    <% } %>
                 <% }); %>
             </tbody>
         </table>
