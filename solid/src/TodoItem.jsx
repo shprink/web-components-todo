@@ -1,7 +1,6 @@
-import { Component } from 'solid-components'
-import { r } from 'solid-js/dom'
+import { customElement } from 'solid-element';
 
-import style from './TodoItem.css'
+import style from './TodoItem.css';
 
 const TodoItem = (props, { element }) =>
   <>
@@ -18,4 +17,4 @@ const TodoItem = (props, { element }) =>
     </li>
   </>
 
-Component('todo-item', { checked: false }, TodoItem);
+customElement('todo-item', { checked: false }, TodoItem);

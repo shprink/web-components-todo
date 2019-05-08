@@ -1,6 +1,5 @@
-import { Component } from 'solid-components';
+import { customElement } from 'solid-element';
 import { createState } from 'solid-js';
-import { r } from 'solid-js/dom';
 
 import style from './MyTodo.css';
 import './TodoInput';
@@ -34,4 +33,4 @@ const MyTodo = () =>  {
   </>
 }
 
-Component('my-todo', MyTodo);
+customElement('my-todo', MyTodo);

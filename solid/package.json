@@ -15,8 +15,8 @@
     "start": "serve public"
   },
   "dependencies": {
-    "babel-plugin-jsx-dom-expressions": "0.7.0",
-    "solid-components": "0.2.3"
+    "babel-plugin-jsx-dom-expressions": "0.8.0",
+    "solid-element": "0.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
