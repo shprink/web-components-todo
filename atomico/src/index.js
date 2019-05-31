@@ -1,74 +1,51 @@
-import { h, Element } from "atomico";
-import TagInput from "./todo-input";
-import TagItem from "./todo-item";
+import { h, customElement, useState } from "atomico";
+
+import TodoInput from "./web-components/todo-input";
+import TodoItem from "./web-components/todo-item";
 
 import style from "./style.css";
 
-export const TAG_TODO = "atom-todo";
-export const TAG_ITEM = "atom-todo-item";
-export const TAG_INPUT = "atom-todo-input";
-
-export default class TagTodo extends Element {
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
-        this.state.list = [
-            { text: "my initial todo", checked: false },
-            { text: "Learn about Web Components", checked: true }
-        ];
-    }
-    render() {
-        let { list = [] } = this.state;
-        return (
-            <div>
-                <h1>Todos Atomico</h1>
-                <section>
-                    <style>{style}</style>
-                    <atom-todo-input
-                        placeholder="What needs to be done?"
-                        create={({ detail }) => {
-                            this.setState({
-                                list: list.concat({
-                                    text: detail.text,
-                                    checked: false
-                                })
-                            });
-                        }}
-                    />
-                    <div id="list-container">
-                        {list.map(({ text, checked }, localIndex) => (
-                            <atom-todo-item
-                                text={text}
-                                checked={checked}
-                                remove={() => {
-                                    this.setState({
-                                        list: list.filter(
-                                            (data, index) => index !== localIndex
-                                        )
-                                    });
-                                }}
-                                toggle={() => {
-                                    this.setState({
-                                        list: list.map(
-                                            (data, index) =>
-                                                index === localIndex
-                                                    ? {
-                                                        ...data,
-                                                        checked: !data.checked
-                                                    }
-                                                    : data
-                                        )
-                                    });
-                                }}
-                            />
-                        ))}
-                    </div>
-                </section>
-            </div>
-        );
-    }
+function Todo({ task = [] }) {
+	let [state, setState] = useState(task);
+	return (
+		<host shadowDom>
+			<style>{style}</style>
+			<TodoInput
+				placeholder="What needs to be done?"
+				handlerChange={task => {
+					setState(state.concat(task));
+				}}
+			/>
+			<div>
+				{state.map(({ text, checked, id }, localIndex) => (
+					<TodoItem
+						key={id}
+						text={text}
+						checked={checked}
+						handlerRemove={() => {
+							setState(state.filter((data, index) => index !== localIndex));
+						}}
+						handlerToggle={() => {
+							setState(
+								state.map((data, index) =>
+									index === localIndex
+										? {
+												...data,
+												checked: !data.checked
+										  }
+										: data
+								)
+							);
+						}}
+					/>
+				))}
+			</div>
+		</host>
+	);
 }
 
-customElements.define(TAG_ITEM, TagItem);
-customElements.define(TAG_INPUT, TagInput);
-customElements.define(TAG_TODO, TagTodo);
+Todo.observables = {
+	task: Array
+};
+
+customElement("atomico-todo", Todo);
