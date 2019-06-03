@@ -11,7 +11,8 @@ const TodoInput = (props, { element }) => {
       element.trigger('create', { detail: state.value });
       setState({ value: '' });
     };
-  return <>
+
+  return (<>
     <style>{ style }</style>
     <form onSubmit={ handleSubmit }>
       <input
@@ -21,7 +22,7 @@ const TodoInput = (props, { element }) => {
         onInput={({ target: { value } }) => setState({ value })}
       />
     </form>
-  </>
+  </>);
 }
 
 customElement('todo-input', TodoInput);

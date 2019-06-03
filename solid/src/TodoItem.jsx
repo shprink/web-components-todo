@@ -1,8 +1,8 @@
 import { customElement } from 'solid-element';
 
-import style from './TodoItem.css';
+import style from './TodoItem.css'
 
-const TodoItem = (props, { element }) =>
+const TodoItem = (props, { element }) => (
   <>
     <style>{ style }</style>
     <li class={( props.checked ? 'completed' : '' )}>
@@ -16,5 +16,6 @@ const TodoItem = (props, { element }) =>
       <button onClick={() => element.trigger('remove')}>x</button>
     </li>
   </>
+);
 
 customElement('todo-item', { checked: false }, TodoItem);

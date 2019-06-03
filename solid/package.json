@@ -15,14 +15,14 @@
     "start": "serve public"
   },
   "dependencies": {
-    "babel-plugin-jsx-dom-expressions": "0.9.2",
+    "babel-plugin-jsx-dom-expressions": "0.9.7",
     "solid-element": "0.5.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
-    "rollup": "1.12.3",
+    "rollup": "1.13.1",
     "rollup-plugin-babel": "4.3.2",
-    "rollup-plugin-node-resolve": "5.0.0",
+    "rollup-plugin-node-resolve": "5.0.1",
     "rollup-plugin-postcss": "2.0.3",
     "rollup-plugin-terser": "5.0.0",
     "serve": "11.0.0"

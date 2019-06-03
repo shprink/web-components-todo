@@ -10,7 +10,10 @@ const MyTodo = () =>  {
   const [state, setState] = createState({ list: [
       { id: uid++, text: "my initial todo", checked: false },
       { id: uid++, text: "Learn about Web Components", checked: true }
-    ] });
+    ] }),
+    toggleChecked = ({ detail: checked }, id) => setState('list', state.list.findIndex(t => t.id === id), { checked }),
+    removeTodo = (e, id) => setState('list', l => l.filter(t => t.id !== id));
+
   return <>
     <style>{ style }</style>
     <h1>Solid Todo</h1>
@@ -24,8 +27,8 @@ const MyTodo = () =>  {
             model={ item.id }
             checked={( item.checked )}
             textContent={ item.text }
-            onCheck={({ detail: checked }, id) => setState('list', state.list.findIndex(t => t.id === id), { checked })}
-            onRemove={(e, id) => setState('list', l => l.filter(t => t.id !== id))}
+            onCheck={ toggleChecked }
+            onRemove={ removeTodo }
           />
         }</$>
       </ul>
