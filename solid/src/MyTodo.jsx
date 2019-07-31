@@ -22,7 +22,7 @@ const MyTodo = () =>  {
         setState('list', l => [...l, { id: uid++, text, checked: false }])
       }/>
       <ul id="list-container">
-        <$ each={ state.list }>{ item =>
+        <For each={( state.list )}>{ item =>
           <todo-item
             model={ item.id }
             checked={( item.checked )}
@@ -30,7 +30,7 @@ const MyTodo = () =>  {
             onCheck={ toggleChecked }
             onRemove={ removeTodo }
           />
-        }</$>
+        }</For>
       </ul>
     </section>
   </>
