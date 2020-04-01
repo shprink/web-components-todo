@@ -1,6 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser';
 
@@ -17,7 +16,7 @@ export default {
 	plugins: [
 		babel({
       exclude: 'node_modules/**',
-      plugins: ["jsx-dom-expressions"]
+      presets: ['solid']
     }),
     resolve({ extensions: ['.js', '.jsx'] }),
     postcss({ inject: false }),
