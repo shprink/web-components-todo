@@ -8,7 +8,7 @@ const TodoInput = (props, { element }) => {
     handleSubmit = e => {
       e.preventDefault();
       if (!state.value) return;
-      element.trigger('create', { detail: state.value });
+      props.createTodo(state.value);
       setState({ value: '' });
     };
 
@@ -25,4 +25,4 @@ const TodoInput = (props, { element }) => {
   </>);
 }
 
-customElement('todo-input', TodoInput);
+customElement('todo-input', { createTodo: null }, TodoInput);
