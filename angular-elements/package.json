@@ -10,7 +10,7 @@
   "dependencies": {
     "@angular/common": "^5.2.2",
     "@angular/compiler": "^5.2.2",
-    "@angular/core": "^5.2.2",
+    "@angular/core": "^11.0.5",
     "@angular/elements": "github:angular/elements-builds#labs/elements",
     "@angular/forms": "^5.2.2",
     "@angular/platform-browser": "^5.2.2",
