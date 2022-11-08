@@ -14,7 +14,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "prettier": "^1.10.2",
     "prettier-eslint": "^8.8.1",
-    "webpack": "^4.0.0-beta.2",
+    "webpack": "^4.46.0",
     "webpack-cli": "^2.0.6"
   }
 }
